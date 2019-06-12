@@ -1,0 +1,12 @@
+.ui.fluid.container {
+    height:"100%";
+    background: #00AAFD;
+    flex-direction: row;
+}
+.fourteen.wide.column{
+    background-color: #00AAFD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
