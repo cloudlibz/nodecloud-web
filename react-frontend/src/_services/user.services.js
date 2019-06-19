@@ -22,12 +22,10 @@ function login(username, password) {
     return fetch(`http://localhost:4000/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
-                console.log("USERSERVICE SUCCESS");
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
-    
+                localStorage.setItem('user', JSON.stringify(user.data));
+                localStorage.setItem('access_token',user.token);
                 return user;
-            
         });
         
 }
@@ -82,8 +80,15 @@ function _delete(id) {
         headers: authHeader()
     };
 
-    return fetch(`/users/${id}`, requestOptions).then(handleResponse);
-}
+    return fetch(`/users/${id}`, requestOptions)
+            .then(handleResponse)
+            .then(user => {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('user', JSON.stringify(user.data));
+                localStorage.setItem('access_token',user.token);
+                return user;
+            });
+    }
 
 function handleResponse(response) {
     return response.text().then(text => {

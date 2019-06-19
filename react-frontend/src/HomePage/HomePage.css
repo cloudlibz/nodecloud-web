@@ -10,3 +10,27 @@
     justify-content: center;
     position: absolute;
 }
+.serviceChooser{
+    height: 200px;
+    width: 200px;
+    border-radius: 6px;
+    border: 1px solid #d2d2d2;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.view_action_service_div{
+    background-color: #f2f2f2;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: #00AAFD;
+    width: 100%;
+    margin: 0;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    height: 50px;
+    font-size: 12px;
+    font-weight: bold;
+}

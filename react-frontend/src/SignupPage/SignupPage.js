@@ -130,8 +130,8 @@ class SignupPage extends React.Component {
                 </div>
               </div>
               <div className="buttonHolder">
-              <Link to="/login" class="ui secondary button">LOGIN</Link> 
-                <button class="ui primary button" onClick={this.handleSubmit}> SIGN UP</button>
+              <Link to="/login" class="ui button">LOGIN</Link> 
+                <button class="ui primarycolor button" onClick={this.handleSubmit}> SIGN UP</button>
           </div>
           </div>
       </div>

@@ -15,7 +15,6 @@ export const userActions = {
 
 
 function login(username, password) {
-    console.log("in user action");
     return dispatch => {
         dispatch(request({ username }));
 
@@ -23,11 +22,9 @@ function login(username, password) {
             .then(
                 user => { 
                     if(user.success){
-                    console.log('USERACTION SUCCESS', user);
                     dispatch(success(user));
                     history.push('/home');
                     } else {
-                    console.log('USERACTION FAILURE',user);
                     dispatch(failure(user.message));
                     dispatch(alertActions.error(user.message));
                     }
@@ -53,11 +50,9 @@ function register(user) {
             .then(
                 user => { 
                     if(user.success){
-                    console.log('USERACTION SUCCESS', user);
                     dispatch(success(user));
                     history.push('/home');
                     } else {
-                    console.log('USERACTION FAILURE',user);
                     dispatch(failure(user.message));
                     dispatch(alertActions.error(user.message));
                     }

@@ -1,5 +1,6 @@
 import { userConstants } from '../_constants/user.constants';
 
+localStorage.clear();
 let user = JSON.parse(localStorage.getItem('user'));
 const initialState = user ? { loggedIn: true, user } : {};
 
