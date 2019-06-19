@@ -12,7 +12,6 @@ router.post('/signup', jsonParser,function(req, response){
          .then(
             res => {
                 var user = res.data;
-                console.log("AA", user);
                 res['token'] = utils.generateToken(user);
                 response.json(res);
             }
