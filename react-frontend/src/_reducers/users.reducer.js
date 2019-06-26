@@ -1,4 +1,4 @@
-import { userConstants } from '../_constants/user.constants';
+import { userConstants } from "../_constants/user.constants";
 
 export function users(state = {}, action) {
   switch (action.type) {
@@ -8,10 +8,13 @@ export function users(state = {}, action) {
       };
     case userConstants.GETALL_SUCCESS:
       return {
-        items: action.users
+        ...state,
+        loading: false,
+        items: action.services
       };
     case userConstants.GETALL_FAILURE:
-      return { 
+      return {
+        loading: false,
         error: action.error
       };
     case userConstants.DELETE_REQUEST:
@@ -19,9 +22,7 @@ export function users(state = {}, action) {
       return {
         ...state,
         items: state.items.map(user =>
-          user.id === action.id
-            ? { ...user, deleting: true }
-            : user
+          user.id === action.id ? { ...user, deleting: true } : user
         )
       };
     case userConstants.DELETE_SUCCESS:
@@ -30,7 +31,7 @@ export function users(state = {}, action) {
         items: state.items.filter(user => user.id !== action.id)
       };
     case userConstants.DELETE_FAILURE:
-      // remove 'deleting:true' property and add 'deleteError:[error]' property to user 
+      // remove 'deleting:true' property and add 'deleteError:[error]' property to user
       return {
         ...state,
         items: state.items.map(user => {
@@ -45,6 +46,6 @@ export function users(state = {}, action) {
         })
       };
     default:
-      return state
+      return state;
   }
 }

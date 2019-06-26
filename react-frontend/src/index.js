@@ -11,17 +11,16 @@
 // // Learn more about service workers: https://bit.ly/CRA-PWA
 // serviceWorker.unregister();
 
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
 
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-
-import { store } from '../src/_helpers/store.js';
-import  {App}  from '../src/App/App.js';
+import { store } from "../src/_helpers/store.js";
+import { App } from "../src/App/App.js";
 
 render(
-    <Provider store={store}>
-        <App/>
-    </Provider>,
-    document.getElementById('app')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("app")
 );
