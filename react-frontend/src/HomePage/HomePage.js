@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { userActions } from "../_actions/user.actions.js";
 import "./HomePage.css";
 import ServiceTable from "./ServiceTable";
+import { Loader } from "semantic-ui-react";
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -21,8 +22,11 @@ class HomePage extends React.Component {
     this.props.dispatch(userActions.getAll(this.state.selectedService));
   }
 
-  handleDeleteUser(id) {
-    return e => this.props.dispatch(userActions.delete(id));
+  handleServiceChange(serviceName) {
+    this.setState({
+      selectedService: serviceName
+    });
+    this.props.dispatch(userActions.getAll(serviceName));
   }
 
   render() {
@@ -54,7 +58,7 @@ class HomePage extends React.Component {
         <div class="ui center aligned page grid" style={{ marginTop: 50 }}>
           <div
             class="three wide left floated column"
-            onClick={() => this.setState({ selectedService: "azure" })}
+            onClick={() => this.handleServiceChange("azure")}
           >
             <div
               className="serviceChooser"
@@ -76,7 +80,7 @@ class HomePage extends React.Component {
           </div>
           <div
             class="three wide column"
-            onClick={() => this.setState({ selectedService: "aws" })}
+            onClick={() => this.handleServiceChange("aws")}
           >
             <div
               className="serviceChooser"
@@ -98,7 +102,7 @@ class HomePage extends React.Component {
           </div>
           <div
             class="three wide right floated column"
-            onClick={() => this.setState({ selectedService: "gcp" })}
+            onClick={() => this.handleServiceChange("gcp")}
           >
             <div
               className="serviceChooser"
@@ -120,7 +124,11 @@ class HomePage extends React.Component {
           </div>
         </div>
         <div style={{ margin: 50 }}>
-          {this.props.users.loading && <p> Data is loading</p>}
+          {this.props.users.loading && (
+            <Loader active inline="centered">
+              Loading {selectedService} services...
+            </Loader>
+          )}
           {!this.props.users.loading && (
             <ServiceTable service={this.props.users.items} />
           )}

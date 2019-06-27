@@ -18,7 +18,6 @@ function login(username, password) {
     body: JSON.stringify({ username, password })
   };
 
-  console.log("USERSERVICE REQUESTOPTIONS", requestOptions);
   return fetch(`http://localhost:4000/login`, requestOptions)
     .then(handleResponse)
     .then(user => {

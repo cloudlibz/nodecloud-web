@@ -5,13 +5,14 @@ class ServiceTable extends Component {
   renderTableData() {
     if (this.props.service) {
       return this.props.service.map((service, index) => {
-        const { id, serviceid, name, type } = service; //destructuring
+        const { id, serviceid, name, type, location } = service; //destructuring
         return (
           <Table.Row key={id}>
             <Table.Cell>{id}</Table.Cell>
             <Table.Cell>{serviceid}</Table.Cell>
             <Table.Cell>{name}</Table.Cell>
             <Table.Cell>{type}</Table.Cell>
+            <Table.Cell>{location}</Table.Cell>
           </Table.Row>
         );
       });
@@ -32,10 +33,10 @@ class ServiceTable extends Component {
       <div>
         {this.props.service && (
           <Table id="users">
-            <Table.Body>
+            <Table.Header>
               <Table.Row>{this.renderTableHeader()}</Table.Row>
-              {this.renderTableData()}
-            </Table.Body>
+            </Table.Header>
+            <Table.Body>{this.renderTableData()}</Table.Body>
           </Table>
         )}
       </div>

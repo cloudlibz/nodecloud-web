@@ -63,6 +63,18 @@ router.get("/home", jsonParser, function(req, response) {
         store.serviceList().then(res => response.json(res));
       }
     );
+  } else if (req.query.serviceProvider === "aws") {
+    res = {
+      success: false,
+      message: "AWS Services are Under development, Please try again later!"
+    };
+    response.json(res);
+  } else if (req.query.serviceProvider === "gcp") {
+    res = {
+      success: false,
+      message: "GCP Services are Under development, Please try again later!"
+    };
+    response.json(res);
   }
 });
 module.exports = router;

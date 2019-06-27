@@ -75,6 +75,7 @@ function getAll(serviceProvider) {
     userService.getAll(serviceProvider).then(res => {
       if (res.success) {
         dispatch(success(res.data));
+        dispatch(alertActions.clear());
       } else {
         dispatch(failure(res.message));
         dispatch(alertActions.error(res.message));

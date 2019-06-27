@@ -66,7 +66,8 @@ module.exports = {
       .insert({
         serviceId: serviceDetails.id,
         name: serviceDetails.name,
-        type: serviceDetails.type
+        type: serviceDetails.type,
+        location: serviceDetails.location
       })
       .then(console.log("Inserted"));
 

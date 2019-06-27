@@ -25,7 +25,7 @@ class App extends React.Component {
     return (
       <div>
         {alert.message && (
-          <div className={`alert ${alert.type}`}>{alert.message}</div>
+          <div className={`ui ${alert.type} message`}>{alert.message}</div>
         )}
         <Router history={history}>
           <PrivateRoute exact path="/" component={HomePage} />

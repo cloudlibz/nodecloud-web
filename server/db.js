@@ -45,6 +45,7 @@ const createTableService = () => {
       t.string("serviceid").notNullable();
       t.string("name").notNullable();
       t.string("type").notNullable();
+      t.string("location").notNullable();
     })
     .then(console.log("Service Table created"));
 
