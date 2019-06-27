@@ -68,11 +68,11 @@ function register(user) {
   }
 }
 
-function getAll() {
+function getAll(serviceProvider) {
   return dispatch => {
     dispatch(request());
 
-    userService.getAll().then(res => {
+    userService.getAll(serviceProvider).then(res => {
       if (res.success) {
         dispatch(success(res.data));
       } else {

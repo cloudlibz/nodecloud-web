@@ -18,7 +18,7 @@ class HomePage extends React.Component {
 
   componentDidMount() {
     this.state.user = localStorage.getItem("user");
-    this.props.dispatch(userActions.getAll());
+    this.props.dispatch(userActions.getAll(this.state.selectedService));
   }
 
   handleDeleteUser(id) {
@@ -26,24 +26,7 @@ class HomePage extends React.Component {
   }
 
   render() {
-    // if(!this.props.users.loading){
-    //     console.log("loaded here")
-    // const items= this.props.users["item"]
-    // tableItems = items.map(item => (
-    //     <Table.Row key={item.id}>
-    //           <Table.Cell>{item.serviceId}</Table.Cell>
-    //           <Table.Cell>{item.name}</Table.Cell>
-    //           <Table.Cell>{item.type}</Table.Cell>
-    //        </Table.Row>
-    // ));
-    // }
     const { selectedService } = this.state;
-    console.log("HOME RENDER METHOD", this.props.users);
-    // if(this.props.users === {}){
-    //     console.log("\n\n\n Empty");
-    // } else {
-    //     console.log("\n\n\n\ has data", this.props.users);
-    // }
     return (
       <div style={{ margin: 20 }}>
         <div class="ui center aligned page grid">

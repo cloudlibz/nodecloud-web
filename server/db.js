@@ -47,6 +47,12 @@ const createTableService = () => {
       t.string("type").notNullable();
     })
     .then(console.log("Service Table created"));
+
+  knex.schema
+    .alterTable("services", function(t) {
+      t.unique("serviceid");
+    })
+    .then("Service Table updated");
 };
 
 module.exports = db;

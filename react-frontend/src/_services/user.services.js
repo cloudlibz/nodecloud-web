@@ -31,15 +31,19 @@ function login(username, password) {
 
 function logout() {
   // remove user from local storage to log user out
+  console.log("some how logout was called");
   localStorage.removeItem("user");
 }
 
-function getAll() {
+function getAll(serviceProvider) {
   const requestOptions = {
     method: "GET",
     headers: authHeader()
   };
-  return fetch(`http://localhost:4000/home`, requestOptions)
+  return fetch(
+    `http://localhost:4000/home/?serviceProvider=${serviceProvider}`,
+    requestOptions
+  )
     .then(handleResponse)
     .then(data => {
       console.log("AAAA", data);

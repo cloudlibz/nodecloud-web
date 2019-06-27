@@ -13,7 +13,7 @@ module.exports = {
   },
 
   signUp(email, username, password) {
-    var user = {
+    let user = {
       username: username,
       email: email
     };
@@ -37,10 +37,10 @@ module.exports = {
           let res = { success: false, message: "Invalid username!" };
           return res;
         }
-        var pass = result[0].password;
+        let pass = result[0].password;
         if (password === pass) {
           // login
-          var user = {
+          let user = {
             username: username,
             email: result[0].email,
             id: result[0].id

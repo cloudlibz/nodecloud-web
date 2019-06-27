@@ -1,10 +1,12 @@
-var express = require("express");
-var app = express();
-var cors = require("cors");
+let express = require("express");
+let app = express();
+let cors = require("cors");
 
 app.set("port", process.env.PORT || 4000);
 app.use(express.static("public"));
 app.use(cors());
+
+// let db = require("../server/db");
 
 const authRoutes = require("./routes/auth");
 app.use("/", authRoutes);
