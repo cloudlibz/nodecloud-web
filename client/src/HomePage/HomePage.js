@@ -6,7 +6,7 @@ import { userActions } from "../_actions/user.actions.js";
 import "./HomePage.css";
 import ServiceTable from "./ServiceTable";
 import NavBar from "./NavBar";
-import { Loader, Modal } from "semantic-ui-react";
+import { Loader, Modal, Form } from "semantic-ui-react";
 import $ from "jquery";
 
 class HomePage extends React.Component {
@@ -64,8 +64,19 @@ class HomePage extends React.Component {
             </div>
             <div class="image content">
               <div class="description">
-                <div class="ui header">Choose service type</div>
-                Work In Progress
+                <Form>
+                  <Form.Input
+                    fluid
+                    label="Resource group"
+                    placeholder="Resource group"
+                  />
+                  <Form.Input
+                    fluid
+                    label="Virtual machine name"
+                    placeholder="Virtual machine name"
+                  />
+                  <Form.Input fluid label="Region" placeholder="Region" />
+                </Form>
               </div>
             </div>
             <div class="actions">
