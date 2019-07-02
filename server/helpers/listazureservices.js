@@ -17,7 +17,8 @@ const params = {
 
 module.exports = {
   getAzureServicesList() {
-    return new Promise((resolve, reject) => {
+    new Promise(function(resolve, reject) {
+      // return new Promise((resolve, reject) => {
       async.parallel(
         {
           1: function(callback) {
@@ -52,7 +53,6 @@ module.exports = {
           //     },
         },
         function(err, results) {
-          const output = "";
           // results is now equals to: {one: 1, two: 2}
           Object.entries(results).map(([param1, param2]) => {
             store.insertService(param2[0]);
@@ -60,11 +60,11 @@ module.exports = {
           // store.serviceList().then(res => response.json(res));
           store.serviceList().then(res => {
             console.log("list methodd called");
-            output = res;
             resolve();
           });
         }
       );
+      // });
     });
   }
 };

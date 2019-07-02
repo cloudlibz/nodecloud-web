@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "history": "^4.9.0",
+    "jquery": "^3.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
