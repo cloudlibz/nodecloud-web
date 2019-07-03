@@ -13,7 +13,7 @@ module.exports = {
   },
 
   signUp(email, username, password) {
-    let user = {
+    const user = {
       username: username,
       email: email
     };
@@ -22,7 +22,7 @@ module.exports = {
       .returning("id")
       .then(function(id) {
         user["id"] = id[0];
-        let res = { success: true, message: "Login Successful", data: user };
+        const res = { success: true, message: "Login Successful", data: user };
         return res;
       });
   },
@@ -34,22 +34,26 @@ module.exports = {
       .then(function(result) {
         if (!result || !result[0]) {
           // not found!
-          let res = { success: false, message: "Invalid username!" };
+          const res = { success: false, message: "Invalid username!" };
           return res;
         }
-        let pass = result[0].password;
+        const pass = result[0].password;
         if (password === pass) {
           // login
-          let user = {
+          const user = {
             username: username,
             email: result[0].email,
             id: result[0].id
           };
-          let res = { success: true, message: "Login Successful", data: user };
+          const res = {
+            success: true,
+            message: "Login Successful",
+            data: user
+          };
           return res;
         } else {
           // failed login
-          let res = {
+          const res = {
             success: false,
             message: "Please enter correct password"
           };
@@ -74,7 +78,11 @@ module.exports = {
     return knex("services")
       .select("*")
       .then(services => {
-        let res = { success: true, message: "Get Successful", data: services };
+        const res = {
+          success: true,
+          message: "Get Successful",
+          data: services
+        };
         return res;
       });
   },
@@ -83,7 +91,11 @@ module.exports = {
     return knex("services")
       .select("*")
       .then(services => {
-        let res = { success: true, message: "Get Successful", data: services };
+        const res = {
+          success: true,
+          message: "Get Successful",
+          data: services
+        };
         return res;
       });
   }

@@ -1,6 +1,6 @@
-let HtmlWebpackPlugin = require("html-webpack-plugin");
-let path = require("path");
-let APP_DIR = path.resolve(__dirname, "src");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const APP_DIR = path.resolve(__dirname, "src");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 

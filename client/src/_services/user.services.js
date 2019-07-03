@@ -1,5 +1,6 @@
 import { authHeader } from "../_helpers/auth-header.js";
 import { history } from "../_helpers/history.js";
+import { Urls } from "../_helpers/urls.js";
 
 export const userService = {
   login,
@@ -18,7 +19,7 @@ function login(username, password) {
     body: JSON.stringify({ username, password })
   };
 
-  return fetch(`http://localhost:4000/login`, requestOptions)
+  return fetch(Urls.BASE_URL + Urls.SUB_URL_LOGIN, requestOptions)
     .then(handleResponse)
     .then(user => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -40,12 +41,11 @@ function getAll(serviceProvider) {
     headers: authHeader()
   };
   return fetch(
-    `http://localhost:4000/home/?serviceProvider=${serviceProvider}`,
+    Urls.BASE_URL + Urls.SUB_URL_HOME + "?serviceProvider=" + serviceProvider,
     requestOptions
   )
     .then(handleResponse)
     .then(data => {
-      console.log("AAAA", data);
       return data;
     });
 }
@@ -66,7 +66,7 @@ function register(user) {
     body: JSON.stringify(user)
   };
 
-  return fetch(`http://localhost:4000/signup`, requestOptions).then(
+  return fetch(Urls.BASE_URL + Urls.SUB_URL_SIGNUP, requestOptions).then(
     handleResponse
   );
 }

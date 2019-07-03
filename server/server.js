@@ -1,12 +1,12 @@
-let express = require("express");
-let app = express();
-let cors = require("cors");
+const express = require("express");
+const app = express();
+const cors = require("cors");
 
 app.set("port", process.env.PORT || 4000);
 app.use(express.static("public"));
 app.use(cors());
 
-// let db = require("../server/db");
+// const db = require("../server/db");
 
 const authRoutes = require("./routes/auth");
 app.use("/", authRoutes);

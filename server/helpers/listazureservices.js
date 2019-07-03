@@ -1,6 +1,6 @@
-let store = require("../store");
-let utils = require("../helpers/utils");
-let async = require("async");
+const store = require("../store");
+const utils = require("../helpers/utils");
+const async = require("async");
 
 const nodeCloud = require("nodecloud");
 

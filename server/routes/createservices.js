@@ -1,9 +1,9 @@
-let express = require("express");
-let router = express.Router();
+const express = require("express");
+const router = express.Router();
 const bodyParser = require("body-parser");
-let jsonParser = bodyParser.json();
-let store = require("../store");
-let utils = require("../helpers/utils");
+const jsonParser = bodyParser.json();
+const store = require("../store");
+const utils = require("../helpers/utils");
 
 const nodeCloud = require("nodecloud");
 
@@ -50,7 +50,7 @@ router.post("/create/azure/virtualmachine", jsonParser, function(
   response
 ) {
   if (utils.validateUser(req.headers.token)) {
-    let body = req.body;
+    const body = req.body;
     vm.create(body.resourceGroupName, body.vmName, params)
       .then(res => {
         return vm.list(resourceGroupName);

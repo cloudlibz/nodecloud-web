@@ -50,7 +50,7 @@ class SignupPage extends React.Component {
 
   handleValidation() {
     const { user } = this.state;
-    let isFormValid = true;
+    const isFormValid = true;
 
     //Password
     if (!user.password) {
@@ -90,8 +90,8 @@ class SignupPage extends React.Component {
         passwordError: ""
       });
     } else if (typeof user.email !== "undefined") {
-      let lastAtPos = user.email.lastIndexOf("@");
-      let lastDotPos = user.email.lastIndexOf(".");
+      const lastAtPos = user.email.lastIndexOf("@");
+      const lastDotPos = user.email.lastIndexOf(".");
 
       if (
         !(

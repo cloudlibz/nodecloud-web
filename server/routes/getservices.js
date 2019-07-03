@@ -1,11 +1,11 @@
-let express = require("express");
-let router = express.Router();
+const express = require("express");
+const router = express.Router();
 const bodyParser = require("body-parser");
-let jsonParser = bodyParser.json();
-let async = require("async");
+const jsonParser = bodyParser.json();
+const async = require("async");
 
-let store = require("../store");
-let utils = require("../helpers/utils");
+const store = require("../store");
+const utils = require("../helpers/utils");
 
 const nodeCloud = require("nodecloud");
 

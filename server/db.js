@@ -2,7 +2,7 @@
 const sqlite3 = require("sqlite3").verbose();
 
 // create a db instance
-let db = new sqlite3.Database("./user.sqlite3", err => {
+const db = new sqlite3.Database("./user.sqlite3", err => {
   if (err) {
     console.log("Error when creating the database", err);
   } else {

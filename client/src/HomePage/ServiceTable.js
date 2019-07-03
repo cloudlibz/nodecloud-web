@@ -20,7 +20,7 @@ class ServiceTable extends Component {
   }
 
   renderTableHeader() {
-    let header = Object.keys(this.props.service[0]);
+    const header = Object.keys(this.props.service[0]);
     return header.map((key, index) => {
       return (
         <Table.HeaderCell key={index}>{key.toUpperCase()}</Table.HeaderCell>

@@ -1,9 +1,9 @@
-let jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 module.exports = {
   generateToken(user) {
-    let u = {
+    const u = {
       email: user.email,
       username: user.username
     };
