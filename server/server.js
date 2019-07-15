@@ -12,6 +12,10 @@ const authRoutes = require("./routes/auth");
 app.use("/", authRoutes);
 const serviceRoutes = require("./routes/getServices");
 app.use("/", serviceRoutes);
+const createRoutes = require("./routes/createservices");
+app.use("/", createRoutes);
+const deleteRoutes = require("./routes/deleteservices");
+app.use("/", deleteRoutes);
 
 app.get("/", function(req, res) {
   return res.redirect("/login");

@@ -10,8 +10,8 @@ const nodeCloud = require("nodecloud");
 const provider = nodeCloud.getProviders(null);
 const vm = provider.azure.compute();
 
-// const resourceGroupName = "nodecloud";
-// const vmName = "nodecloud-test";
+const resourceGroupName = "nodecloud";
+const vmName = "nodecloud-test-create1";
 const publisher = "Canonical";
 const offer = "UbuntuServer";
 const sku = "14.04.3-LTS";
@@ -49,9 +49,16 @@ router.post("/create/azure/virtualmachine", jsonParser, function(
   req,
   response
 ) {
-  if (utils.validateUser(req.headers.token)) {
+  if (utils.validateUser(req.body.token)) {
     const body = req.body;
-    vm.create(body.resourceGroupName, body.vmName, params)
+    vm.createOrUpdate(body.resourceGroupName, body.vmName, params)
+      .then(resp => {
+        res = {
+          success: true,
+          message: "Successfully created " + body.vmName + " !"
+        };
+        response.json(res);
+      })
       .then(res => {
         return vm.list(resourceGroupName);
       })
@@ -81,3 +88,4 @@ router.post("/create/azure/virtualmachine", jsonParser, function(
     response.json(res);
   }
 });
+module.exports = router;

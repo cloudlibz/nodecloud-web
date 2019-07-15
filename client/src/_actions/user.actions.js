@@ -8,6 +8,7 @@ export const userActions = {
   logout,
   register,
   getAll,
+  createVM,
   delete: _delete
 };
 
@@ -94,6 +95,31 @@ function getAll(serviceProvider) {
   }
 }
 
+function createVM(params) {
+  return dispatch => {
+    dispatch(request(params));
+    userService.createVM(params).then(res => {
+      if (res.success) {
+        dispatch(success(res.data));
+        dispatch(alertActions.success(res.message));
+      } else {
+        dispatch(failure(res.message));
+        dispatch(alertActions.error(res.message));
+      }
+    });
+  };
+
+  function request(params) {
+    return { type: userConstants.CREATE_VM_REQUEST, params };
+  }
+  function success(response) {
+    return { type: userConstants.CREATE_VM_SUCCESS, response };
+  }
+  function failure(error) {
+    return { type: userConstants.CREATE_VM_FAILURE, error };
+  }
+}
+
 // prefixed function name with underscore because delete is a reserved word in javascript
 function _delete(id) {
   return dispatch => {
@@ -102,6 +128,7 @@ function _delete(id) {
     userService.delete(id).then(
       user => {
         dispatch(success(id));
+        dispatch(alertActions.success(user.message));
       },
       error => {
         dispatch(failure(id, error));

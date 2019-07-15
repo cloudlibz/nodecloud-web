@@ -98,5 +98,9 @@ module.exports = {
         };
         return res;
       });
+  },
+
+  deleteList() {
+    return knex("services").del();
   }
 };

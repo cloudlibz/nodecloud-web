@@ -13,6 +13,9 @@ class ServiceTable extends Component {
             <Table.Cell>{name}</Table.Cell>
             <Table.Cell>{type}</Table.Cell>
             <Table.Cell>{location}</Table.Cell>
+            <Table.Cell onClick={() => this.onDelete(name)}>
+              <i class="trash alternate icon" />
+            </Table.Cell>
           </Table.Row>
         );
       });
@@ -26,6 +29,10 @@ class ServiceTable extends Component {
         <Table.HeaderCell key={index}>{key.toUpperCase()}</Table.HeaderCell>
       );
     });
+  }
+
+  onDelete(name) {
+    this.props.handleDeleteService(name);
   }
 
   render() {

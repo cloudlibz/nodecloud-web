@@ -7,7 +7,6 @@ import "./HomePage.css";
 import ServiceTable from "./ServiceTable";
 import NavBar from "./NavBar";
 import { Loader, Modal, Form } from "semantic-ui-react";
-import $ from "jquery";
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -16,9 +15,23 @@ class HomePage extends React.Component {
     this.state = {
       selectedService: "azure",
       user: "",
-      showModal: false
+      showModal: false,
+      showSideBar: true,
+      selectedDashboardService: "",
+      virtualMachine: {
+        resourceGroupName: "",
+        vmName: "",
+        location: ""
+      }
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleServiceCreate = this.handleServiceCreate.bind(this);
+    this.changeSelectedDashboardService = this.changeSelectedDashboardService.bind(
+      this
+    );
   }
+
   openModal() {
     this.setState({ showModal: true });
   }
@@ -48,11 +61,53 @@ class HomePage extends React.Component {
     });
   }
 
+  handleServiceCreate(event) {
+    event.preventDefault();
+    const { virtualMachine } = this.state;
+    this.props.dispatch(userActions.createVM(virtualMachine));
+    this.setState({ showModal: false });
+  }
+
+  handleChange(event) {
+    const { name, value } = event.target;
+    const { virtualMachine } = this.state;
+    this.setState({
+      virtualMachine: {
+        ...virtualMachine,
+        [name]: value
+      }
+    });
+  }
+
+  handleDeleteService(name) {
+    this.props.dispatch(userActions.delete(name));
+  }
+
+  handleShowSideBar() {
+    this.setState({
+      showSideBar: !this.state.showSideBar
+    });
+  }
+
+  changeSelectedDashboardService(serviceName) {
+    this.setState({
+      selectedDashboardService: serviceName
+    });
+  }
+
   render() {
-    const { selectedService, showModal } = this.state;
+    const {
+      selectedService,
+      showModal,
+      virtualMachine,
+      showSideBar
+    } = this.state;
     return (
       <div>
-        <NavBar handleCreateModal={() => this.handleCreateModal()} />
+        <NavBar
+          handleCreateModal={() => this.handleCreateModal()}
+          handleShowSideBar={() => this.handleShowSideBar()}
+        />
         <div style={{ margin: 20 }}>
           <Modal open={showModal} id="test">
             <i class="close icon" onClick={() => this.closeModal()} />
@@ -67,26 +122,75 @@ class HomePage extends React.Component {
                 <Form>
                   <Form.Input
                     fluid
+                    name="resourceGroupName"
                     label="Resource group"
                     placeholder="Resource group"
+                    onChange={this.handleChange}
                   />
                   <Form.Input
                     fluid
+                    name="vmName"
                     label="Virtual machine name"
                     placeholder="Virtual machine name"
+                    onChange={this.handleChange}
                   />
-                  <Form.Input fluid label="Region" placeholder="Region" />
+                  <Form.Input
+                    fluid
+                    name="location"
+                    label="Region"
+                    placeholder="Region"
+                    onChange={this.handleChange}
+                  />
                 </Form>
               </div>
             </div>
             <div class="actions">
-              <div class="ui positive right labeled icon button">
+              <div
+                class="ui positive right labeled icon button"
+                onClick={this.handleServiceCreate}
+              >
                 Create Service
                 <i class="checkmark icon" />
               </div>
             </div>
           </Modal>
 
+          {showSideBar && (
+            <div
+              class="ui sidebar vertical left menu overlay visible"
+              display="none"
+            >
+              <div class="ui accordion">
+                <a class="item">
+                  <b>Home</b>
+                </a>
+                <a
+                  class="item"
+                  onClick={() =>
+                    this.changeSelectedDashboardService("virtualMachines")
+                  }
+                >
+                  Virtual Machines
+                </a>
+                <a
+                  class="item"
+                  onClick={() =>
+                    this.changeSelectedDashboardService("virtualNetworks")
+                  }
+                >
+                  Virtual Networks
+                </a>
+                <a
+                  class="item"
+                  onClick={() =>
+                    this.changeSelectedDashboardService("loadBalancers")
+                  }
+                >
+                  Load Balancers
+                </a>
+              </div>
+            </div>
+          )}
           <div class="ui center aligned page grid" />
           <div class="ui center aligned page grid" style={{ marginTop: 50 }}>
             <div
@@ -163,7 +267,10 @@ class HomePage extends React.Component {
               </Loader>
             )}
             {!this.props.users.loading && (
-              <ServiceTable service={this.props.users.items} />
+              <ServiceTable
+                service={this.props.users.items}
+                handleDeleteService={name => this.handleDeleteService(name)}
+              />
             )}
           </div>
         </div>

@@ -7,6 +7,7 @@ export const userService = {
   logout,
   register,
   getAll,
+  createVM,
   getById,
   update,
   delete: _delete
@@ -31,8 +32,8 @@ function login(username, password) {
 
 function logout() {
   // remove user from local storage to log user out
-  console.log("some how logout was called");
   localStorage.removeItem("user");
+  localStorage.removeItem("access_token");
 }
 
 function getAll(serviceProvider) {
@@ -71,6 +72,19 @@ function register(user) {
   );
 }
 
+function createVM(params) {
+  params.token = authHeader().token;
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params)
+  };
+
+  return fetch(Urls.BASE_URL + Urls.SUB_URL_CREATE_VM, requestOptions).then(
+    handleResponse
+  );
+}
+
 function update(user) {
   const requestOptions = {
     method: "PUT",
@@ -88,12 +102,14 @@ function _delete(id) {
     headers: authHeader()
   };
 
-  return fetch(`/users/${id}`, requestOptions)
+  return fetch(
+    Urls.BASE_URL + Urls.SUB_URL_DELETE + "?id=" + id,
+    requestOptions
+  )
     .then(handleResponse)
     .then(user => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem("user", JSON.stringify(user.data));
-      localStorage.setItem("access_token", user.token);
+      getAll();
       return user;
     });
 }
