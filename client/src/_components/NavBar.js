@@ -32,7 +32,7 @@ class NavBar extends Component {
       <div>
         <div class="pusher">
           <div class="ui menu asd borderless">
-            <a class="item openbtn" onClick={this.handleShowSideBar.bind(this)}>
+            <a class="item openbtn" onClick={this.handleShowSideBar}>
               <i class="icon content" />
             </a>
             <img src={require("../media/nodecloudlogo.png")} class="nav-logo" />

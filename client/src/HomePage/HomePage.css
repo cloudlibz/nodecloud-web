@@ -34,9 +34,3 @@
   font-size: 12px;
   font-weight: bold;
 }
-.ui.sidebar.vertical.left.menu {
-  position: fixed;
-  top: 65px;
-  height: calc(100vh - 65px) !important;
-  box-shadow: none;
-}

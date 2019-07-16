@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import { userActions } from "../_actions/user.actions.js";
 import "./HomePage.css";
 import ServiceTable from "./ServiceTable";
-import NavBar from "./NavBar";
+import NavBar from "../_components/NavBar";
+import SideBar from "../_components/SideBar";
 import { Loader, Modal, Form } from "semantic-ui-react";
 
 class HomePage extends React.Component {
@@ -156,40 +157,11 @@ class HomePage extends React.Component {
           </Modal>
 
           {showSideBar && (
-            <div
-              class="ui sidebar vertical left menu overlay visible"
-              display="none"
-            >
-              <div class="ui accordion">
-                <a class="item">
-                  <b>Home</b>
-                </a>
-                <a
-                  class="item"
-                  onClick={() =>
-                    this.changeSelectedDashboardService("virtualMachines")
-                  }
-                >
-                  Virtual Machines
-                </a>
-                <a
-                  class="item"
-                  onClick={() =>
-                    this.changeSelectedDashboardService("virtualNetworks")
-                  }
-                >
-                  Virtual Networks
-                </a>
-                <a
-                  class="item"
-                  onClick={() =>
-                    this.changeSelectedDashboardService("loadBalancers")
-                  }
-                >
-                  Load Balancers
-                </a>
-              </div>
-            </div>
+            <SideBar
+              changeSelectedDashboardService={serviceName =>
+                this.changeSelectedDashboardService(serviceName)
+              }
+            />
           )}
           <div class="ui center aligned page grid" />
           <div class="ui center aligned page grid" style={{ marginTop: 50 }}>
