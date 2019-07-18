@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./SideBar.css";
+import { history } from "../_helpers/history.js";
 
 class SideBar extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class SideBar extends Component {
   }
 
   changeSelectedDashboardService(serviceName) {
+    history.push("/virtualmachines");
     this.props.changeSelectedDashboardService(serviceName);
   }
 
@@ -29,7 +31,7 @@ class SideBar extends Component {
             <a
               class="item"
               onClick={() =>
-                this.changeSelectedDashboardService("virtualMachines")
+                this.changeSelectedDashboardService("virtualmachines")
               }
             >
               Virtual Machines
@@ -37,7 +39,7 @@ class SideBar extends Component {
             <a
               class="item"
               onClick={() =>
-                this.changeSelectedDashboardService("virtualNetworks")
+                this.changeSelectedDashboardService("virtualnetworks")
               }
             >
               Virtual Networks
@@ -45,7 +47,7 @@ class SideBar extends Component {
             <a
               class="item"
               onClick={() =>
-                this.changeSelectedDashboardService("loadBalancers")
+                this.changeSelectedDashboardService("loadbalancers")
               }
             >
               Load Balancers

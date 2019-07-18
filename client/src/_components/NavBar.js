@@ -1,15 +1,5 @@
 import React, { Component } from "react";
 import "./NavBar.css";
-import HomePage from "../HomePage/HomePage.js";
-import {
-  Button,
-  Header,
-  Icon,
-  Image,
-  Menu,
-  Segment,
-  Sidebar
-} from "semantic-ui-react";
 
 class NavBar extends Component {
   constructor(props) {

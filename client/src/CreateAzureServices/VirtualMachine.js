@@ -3,27 +3,43 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { userActions } from "../_actions/user.actions.js";
-import "./HomePage.css";
-import ServiceTable from "./ServiceTable";
+// import "./HomePage.css";
+// import ServiceTable from "./ServiceTable";
 import NavBar from "../_components/NavBar";
 import SideBar from "../_components/SideBar";
 import { Loader, Modal, Form } from "semantic-ui-react";
+import InputTextField from "../_components/_formcomponents/InputTextField";
+import DropdownSelect from "../_components/_formcomponents/DropdownSelect";
 
-class HomePage extends React.Component {
+class VirtualMachine extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedService: "azure",
-      user: "",
-      showModal: false,
-      showSideBar: true,
-      selectedDashboardService: "",
-      virtualMachine: {
-        resourceGroupName: "",
-        vmName: "",
-        location: ""
-      }
+      fields: [
+        {
+          placeholder: "Resource group",
+          name: "Resource group",
+          input_type: "text",
+          required: true
+        },
+        {
+          placeholder: "Virtual machine name",
+          name: "Virtual machine name",
+          input_type: "text",
+          required: true
+        },
+        {
+          placeholder: "Region",
+          name: "region",
+          input_type: "dropdown",
+          required: true,
+          values: [
+            { value: "centralus", text: "Central US" },
+            { value: "northus", text: "northus" }
+          ]
+        }
+      ]
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -33,21 +49,24 @@ class HomePage extends React.Component {
     );
   }
 
+  submitForm(event) {
+    const { fields, ...inputFields } = this.state;
+    console.log(inputFields);
+    event.preventDefault();
+  }
+
+  _handleChange(event) {
+    this.setState({
+      [event.currentTarget.name]: event.currentTarget.value
+    });
+  }
+
   openModal() {
     this.setState({ showModal: true });
   }
   closeModal() {
     this.setState({ showModal: false });
   }
-
-  componentDidMount() {
-    this.state.user = localStorage.getItem("user");
-    this.props.dispatch(userActions.getAll(this.state.selectedService));
-  }
-
-  // componentWillUnmount() {
-  //   this.props.onRef(undefined);
-  // }
 
   handleServiceChange(serviceName) {
     this.setState({
@@ -98,6 +117,7 @@ class HomePage extends React.Component {
 
   render() {
     const {
+      fields,
       selectedService,
       showModal,
       virtualMachine,
@@ -163,87 +183,36 @@ class HomePage extends React.Component {
               }
             />
           )}
-          <div class="ui center aligned page grid" />
-          <div class="ui center aligned page grid" style={{ marginTop: 50 }}>
-            <div
-              class="three wide left floated column"
-              onClick={() => this.handleServiceChange("azure")}
-            >
-              <div
-                className="serviceChooser"
-                style={
-                  selectedService == "azure"
-                    ? { borderColor: "#00AAFD", boxShadow: 20 }
-                    : { borderColor: "#d2d2d2" }
-                }
-              >
-                <img
-                  src={require("../media/azure.png")}
-                  alt="Nodecloud Logo"
-                  class="ui small image"
-                />
-                <div className="view_action_service_div">
-                  <p>VIEW ACTIVE SERVICES</p>
-                </div>
-              </div>
-            </div>
-            <div
-              class="three wide column"
-              onClick={() => this.handleServiceChange("aws")}
-            >
-              <div
-                className="serviceChooser"
-                style={
-                  selectedService == "aws"
-                    ? { borderColor: "#00AAFD" }
-                    : { borderColor: "#d2d2d2" }
-                }
-              >
-                <img
-                  src={require("../media/aws.png")}
-                  alt="Nodecloud Logo"
-                  class="ui small image"
-                />
-                <div className="view_action_service_div">
-                  <p>VIEW ACTIVE SERVICES</p>
-                </div>
-              </div>
-            </div>
-            <div
-              class="three wide right floated column"
-              onClick={() => this.handleServiceChange("gcp")}
-            >
-              <div
-                className="serviceChooser"
-                style={
-                  selectedService == "gcp"
-                    ? { borderColor: "#00AAFD" }
-                    : { borderColor: "#d2d2d2" }
-                }
-              >
-                <img
-                  src={require("../media/gcp.png")}
-                  alt="Nodecloud Logo"
-                  class="ui small image"
-                />
-                <div className="view_action_service_div">
-                  <p>VIEW ACTIVE SERVICES</p>
-                </div>
-              </div>
-            </div>
-          </div>
           <div style={{ margin: 50 }}>
-            {this.props.users.loading && (
-              <Loader active inline="centered">
-                Loading {selectedService} services...
-              </Loader>
-            )}
-            {!this.props.users.loading && (
-              <ServiceTable
-                service={this.props.users.items}
-                handleDeleteService={name => this.handleDeleteService(name)}
-              />
-            )}
+            <h1>Virtual Machine </h1>
+            <Form onSubmit={this.submitForm}>
+              {fields.map(form => {
+                if (form.input_type === "text") {
+                  return (
+                    <InputTextField
+                      name={form.name}
+                      placeholder={form.placeholder}
+                      required={form.required}
+                      key={form.placeholder}
+                      _handleChange={this._handleChange}
+                    />
+                  );
+                }
+                if (form.input_type === "dropdown") {
+                  return (
+                    <DropdownSelect
+                      name={form.name}
+                      placeholder={form.placeholder}
+                      required={form.required}
+                      val={form.values}
+                      key={form.placeholder}
+                      _handleChange={this._handleChange}
+                    />
+                  );
+                }
+              })}
+              <input type="submit" />
+            </Form>
           </div>
         </div>
       </div>
@@ -257,5 +226,5 @@ const mapStateToProps = state => {
   };
 };
 
-const connectedHomePage = connect(mapStateToProps)(HomePage);
-export { connectedHomePage as HomePage };
+const connectedVirtualMachine = connect(mapStateToProps)(VirtualMachine);
+export { connectedVirtualMachine as VirtualMachine };

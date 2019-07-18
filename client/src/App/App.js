@@ -8,6 +8,8 @@ import { PrivateRoute } from "../_components/PrivateRoute.js";
 import { HomePage } from "../HomePage/HomePage.js";
 import { LoginPage } from "../LoginPage/LoginPage.js";
 import { SignupPage } from "../SignupPage/SignupPage.js";
+import { VirtualMachine } from "../CreateAzureServices/VirtualMachine.js";
+import { PageNotFound } from "../_helpers/PageNotFound.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -32,6 +34,8 @@ class App extends React.Component {
           <Route path="/login" component={LoginPage} />
           <Route path="/home" component={HomePage} />
           <Route path="/signup" component={SignupPage} />
+          <Route path="/virtualmachines" component={VirtualMachine} />
+          <Route component={PageNotFound} />
         </Router>
       </div>
     );
