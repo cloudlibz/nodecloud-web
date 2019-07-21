@@ -7,13 +7,14 @@ class SideBar extends Component {
     super(props);
     // this._child = React.createRef();
     this.state = { visible: true };
+    this.navActiveState = true;
     this.changeSelectedDashboardService = this.changeSelectedDashboardService.bind(
       this
     );
   }
 
   changeSelectedDashboardService(serviceName) {
-    history.push("/virtualmachines");
+    history.push(`/${serviceName}`);
     this.props.changeSelectedDashboardService(serviceName);
   }
 
@@ -21,11 +22,15 @@ class SideBar extends Component {
     return (
       <div>
         <div
-          class="ui sidebar vertical left menu overlay visible"
-          display="none"
+          class={
+            this.state.visible
+              ? "ui sidebar vertical left menu overlay visible navActive"
+              : "ui sidebar vertical left menu overlay visible"
+          }
+          // display="none"
         >
           <div class="ui accordion">
-            <a class="item">
+            <a class="item" onClick={() => history.push("/home")}>
               <b>Home</b>
             </a>
             <a
@@ -43,6 +48,12 @@ class SideBar extends Component {
               }
             >
               Virtual Networks
+            </a>
+            <a
+              class="item"
+              onClick={() => this.changeSelectedDashboardService("database")}
+            >
+              Database
             </a>
             <a
               class="item"

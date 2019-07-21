@@ -7,7 +7,9 @@ export const userService = {
   logout,
   register,
   getAll,
-  createVM,
+  createVirtualMachine,
+  createVirtualNetwork,
+  createDatabase,
   getById,
   update,
   delete: _delete
@@ -72,7 +74,7 @@ function register(user) {
   );
 }
 
-function createVM(params) {
+function createVirtualMachine(params) {
   params.token = authHeader().token;
   const requestOptions = {
     method: "POST",
@@ -80,9 +82,38 @@ function createVM(params) {
     body: JSON.stringify(params)
   };
 
-  return fetch(Urls.BASE_URL + Urls.SUB_URL_CREATE_VM, requestOptions).then(
-    handleResponse
-  );
+  return fetch(
+    Urls.BASE_URL + params.provider + Urls.SUB_URL_CREATE_VIRTUAL_MACHINE,
+    requestOptions
+  ).then(handleResponse);
+}
+
+function createVirtualNetwork(params) {
+  params.token = authHeader().token;
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params)
+  };
+
+  return fetch(
+    Urls.BASE_URL + params.provider + Urls.SUB_URL_CREATE_VIRTUAL_NETWORK,
+    requestOptions
+  ).then(handleResponse);
+}
+
+function createDatabase(params) {
+  params.token = authHeader().token;
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params)
+  };
+
+  return fetch(
+    Urls.BASE_URL + params.provider + Urls.SUB_URL_CREATE_DATABASE,
+    requestOptions
+  ).then(handleResponse);
 }
 
 function update(user) {

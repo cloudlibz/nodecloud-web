@@ -5,4 +5,5 @@
 .pusher .nav-logo {
   max-width: 100px;
   height: 100%;
+  cursor: pointer;
 }

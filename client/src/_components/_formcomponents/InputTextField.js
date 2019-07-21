@@ -3,7 +3,7 @@ import { Form } from "semantic-ui-react";
 
 function InputTextField({ name, placeholder, required, _handleChange }) {
   return (
-    <div>
+    <div style={{ marginTop: "10px" }}>
       <Form.Input
         type="text"
         name={name}

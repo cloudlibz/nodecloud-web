@@ -1,6 +1,11 @@
 .ui.sidebar.vertical.left.menu {
   position: fixed;
+  left: 0;
   top: 65px;
   height: calc(100vh - 65px) !important;
   box-shadow: none;
+  transition: all 300ms ease-in-out;
+}
+.ui.sidebar.vertical.left.menu.navActive {
+  left: 0;
 }

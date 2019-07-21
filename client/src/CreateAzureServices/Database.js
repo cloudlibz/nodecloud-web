@@ -11,7 +11,7 @@ import { Loader, Modal, Form } from "semantic-ui-react";
 import InputTextField from "../_components/_formcomponents/InputTextField";
 import DropdownSelect from "../_components/_formcomponents/DropdownSelect";
 
-class VirtualMachine extends React.Component {
+class Database extends React.Component {
   constructor(props) {
     super(props);
 
@@ -24,8 +24,14 @@ class VirtualMachine extends React.Component {
           required: true
         },
         {
-          placeholder: "Virtual machine name",
-          name: "Virtual machine name",
+          placeholder: "Server name",
+          name: "Server name",
+          input_type: "text",
+          required: true
+        },
+        {
+          placeholder: "Database name",
+          name: "Database name",
           input_type: "text",
           required: true
         },
@@ -40,8 +46,20 @@ class VirtualMachine extends React.Component {
           ]
         },
         {
-          placeholder: "Ex: Linux",
-          name: "OS Type",
+          placeholder: "Administrator Login",
+          name: "Administrator Login",
+          input_type: "text",
+          required: true
+        },
+        {
+          placeholder: "Administrator Password",
+          name: "Administrator Password",
+          input_type: "text",
+          required: true
+        },
+        {
+          placeholder: "Ex: 1.0",
+          name: "Version",
           input_type: "text",
           required: true
         }
@@ -60,15 +78,19 @@ class VirtualMachine extends React.Component {
   }
 
   submitForm(event) {
-    event.preventDefault();
     const { fields, ...inputFields } = this.state;
-    this.props.dispatch(userActions.createVirtualMachine(inputFields));
+    event.preventDefault();
+    this.props.dispatch(userActions.createDatabase(inputFields));
   }
 
   _handleChange(event, { name, value }) {
     this.setState({
       [name]: value
     });
+  }
+
+  handleServiceCreate(event) {
+    this.setState({ showModal: false });
   }
 
   handleShowSideBar() {
@@ -113,7 +135,7 @@ class VirtualMachine extends React.Component {
               marginLeft: showSideBar ? 250 : 0
             }}
           >
-            <h1>Virtual Machine </h1>
+            <h1> Database </h1>
             {provider === "azure" ? (
               <Form onSubmit={this.submitForm}>
                 {fields.map(form => {
@@ -173,5 +195,5 @@ const mapStateToProps = state => {
   };
 };
 
-const connectedVirtualMachine = connect(mapStateToProps)(VirtualMachine);
-export { connectedVirtualMachine as VirtualMachine };
+const connectedDatabase = connect(mapStateToProps)(Database);
+export { connectedDatabase as Database };

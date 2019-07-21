@@ -14,7 +14,7 @@ class HomePage extends React.Component {
     super(props);
 
     this.state = {
-      selectedService: "azure",
+      selectedService: localStorage.getItem("currentProvider"),
       user: "",
       showModal: false,
       showSideBar: true,
@@ -50,6 +50,7 @@ class HomePage extends React.Component {
   // }
 
   handleServiceChange(serviceName) {
+    localStorage.setItem("currentProvider", serviceName);
     this.setState({
       selectedService: serviceName
     });
@@ -109,7 +110,7 @@ class HomePage extends React.Component {
           handleCreateModal={() => this.handleCreateModal()}
           handleShowSideBar={() => this.handleShowSideBar()}
         />
-        <div style={{ margin: 20 }}>
+        <div style={{ margin: 20, marginLeft: showSideBar ? 250 : 0 }}>
           <Modal open={showModal} id="test">
             <i class="close icon" onClick={() => this.closeModal()} />
             <div class="header">
