@@ -56,21 +56,6 @@ router.post("/azure/create/virtualmachine", jsonParser, function(
     };
     vm.createOrUpdate(resourceGroupName, vmName, params)
       .then(res => {
-        return vm.list(resourceGroupName);
-      })
-      .then(res => {
-        return vm.start(resourceGroupName, vmName);
-      })
-      .then(res => {
-        return vm.reboot(resourceGroupName, vmName);
-      })
-      .then(res => {
-        return vm.stop(resourceGroupName, vmName);
-      })
-      .then(res => {
-        return vm.destroy(resourceGroupName, vmName);
-      })
-      .then(res => {
         console.log(res);
       })
       .catch(err => {
@@ -129,85 +114,6 @@ router.post("/azure/create/virtualnetwork", jsonParser, function(
       .create(resourceGroupName, networkName, params)
       .then(res => {
         console.log(res);
-        return network.list(resourceGroupName);
-      })
-      .then(res => {
-        console.log(res);
-        return network.get(resourceGroupName, networkName, params);
-      })
-      .then(res => {
-        console.log(res);
-        return network.createSubnet(
-          resourceGroupName,
-          networkName,
-          subnetName,
-          subnetParams
-        );
-      })
-      .then(res => {
-        console.log(res);
-        return network.deleteSubnet(
-          resourceGroupName,
-          networkName,
-          subnetName,
-          {}
-        );
-      })
-      .then(res => {
-        console.log(res);
-        return network.delete(resourceGroupName, networkName, params);
-      })
-      .then(res => {
-        console.log(res);
-        return network.createSecurityGroup(
-          resourceGroupName,
-          securityGroupName,
-          commonParams
-        );
-      })
-      .then(res => {
-        console.log(res);
-        return network.createSecurityRule(
-          resourceGroupName,
-          securityGroupName,
-          securityRuleName,
-          securityRulesParams
-        );
-      })
-      .then(res => {
-        console.log(res);
-        return network.deleteSecurityRule(
-          resourceGroupName,
-          securityGroupName,
-          securityRuleName,
-          {}
-        );
-      })
-      .then(res => {
-        console.log(res);
-        return network.deleteSecurityGroup(
-          resourceGroupName,
-          securityGroupName
-        );
-      })
-      .then(res => {
-        console.log(res);
-        return network.createLoadBalancer(
-          resourceGroupName,
-          loadBalancerName,
-          commonParams
-        );
-      })
-      .then(res => {
-        console.log(res);
-        return network.deleteLoadBalancer(
-          resourceGroupName,
-          loadBalancerName,
-          {}
-        );
-      })
-      .then(res => {
-        console.log(res);
       })
       .catch(err => {
         console.error(err);
@@ -249,17 +155,6 @@ router.post("/azure/create/database", jsonParser, function(req, response) {
           databaseName,
           createDBParams
         );
-      })
-      .then(res => {
-        console.log("Database created.");
-        return sql.deleteDatabase(resourceGroupName, serverName, databaseName);
-      })
-      .then(res => {
-        console.log("Database deleted");
-        return sql.deleteDBInstance(resourceGroupName, serverName, {});
-      })
-      .then(res => {
-        console.log("Database Server Deleted");
       })
       .catch(err => {
         console.error(err);
