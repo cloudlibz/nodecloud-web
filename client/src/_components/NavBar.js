@@ -6,7 +6,6 @@ import { Dropdown } from "semantic-ui-react";
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    // this._child = React.createRef();
     this.state = { visible: true };
     this.handleShowSideBar = this.handleShowSideBar.bind(this);
   }
@@ -78,14 +77,7 @@ class NavBar extends Component {
                   <a class="item">Logout</a>
                 </div>
               </div>
-              <div class="item">
-                {/* <div
-                  class="ui primary button"
-                  onClick={() => this.onCreateClick()}
-                >
-                  Create
-                </div> */}
-              </div>
+              <div class="item" />
             </div>
           </div>
         </div>

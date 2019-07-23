@@ -1,13 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { userActions } from "../_actions/user.actions.js";
-// import "./HomePage.css";
-// import ServiceTable from "./ServiceTable";
 import NavBar from "../_components/NavBar";
 import SideBar from "../_components/SideBar";
-import { Loader, Modal, Form } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 import InputTextField from "../_components/_formcomponents/InputTextField";
 import DropdownSelect from "../_components/_formcomponents/DropdownSelect";
 
@@ -84,14 +81,7 @@ class VirtualMachine extends React.Component {
   }
 
   render() {
-    const {
-      fields,
-      selectedService,
-      showModal,
-      virtualMachine,
-      showSideBar,
-      provider
-    } = this.state;
+    const { fields, showSideBar, provider } = this.state;
     return (
       <div>
         <NavBar

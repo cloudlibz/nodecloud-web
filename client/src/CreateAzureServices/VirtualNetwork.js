@@ -1,13 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { userActions } from "../_actions/user.actions.js";
-// import "./HomePage.css";
-// import ServiceTable from "./ServiceTable";
 import NavBar from "../_components/NavBar";
 import SideBar from "../_components/SideBar";
-import { Loader, Modal, Form } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 import InputTextField from "../_components/_formcomponents/InputTextField";
 import DropdownSelect from "../_components/_formcomponents/DropdownSelect";
 
@@ -109,14 +106,7 @@ class VirtualNetwork extends React.Component {
   }
 
   render() {
-    const {
-      fields,
-      selectedService,
-      showModal,
-      virtualMachine,
-      showSideBar,
-      provider
-    } = this.state;
+    const { fields, showSideBar, provider } = this.state;
     return (
       <div>
         <NavBar
@@ -132,29 +122,13 @@ class VirtualNetwork extends React.Component {
             />
           )}
           <div
-            // style={{
-            //   position: "fixed",
-            //   left: showSideBar ? 260 : 0,
-            //   right: 0,
-            //   top: "65px",
-            //   right: 0
-            // }}
             style={{
               margin: 50,
               width: "50%",
               marginLeft: showSideBar ? 250 : 0
             }}
           >
-            <div
-            //   style={{
-            //     maxWidth: "400px",
-            //     margin: "auto",
-            //     marginTop: "20px",
-            //     padding: "20px",
-            //     boxShadow: "0 0 10px rgba(169, 169, 169, 0.33)",
-            //     borderRadius: "5px"
-            //   }}
-            >
+            <div>
               <h1>Virtual Network </h1>
               {provider === "azure" ? (
                 <Form onSubmit={this.submitForm}>

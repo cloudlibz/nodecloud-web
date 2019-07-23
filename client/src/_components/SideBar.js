@@ -5,7 +5,6 @@ import { history } from "../_helpers/history.js";
 class SideBar extends Component {
   constructor(props) {
     super(props);
-    // this._child = React.createRef();
     this.state = { visible: true };
     this.navActiveState = true;
     this.changeSelectedDashboardService = this.changeSelectedDashboardService.bind(
@@ -27,7 +26,6 @@ class SideBar extends Component {
               ? "ui sidebar vertical left menu overlay visible navActive"
               : "ui sidebar vertical left menu overlay visible"
           }
-          // display="none"
         >
           <div class="ui accordion">
             <a class="item" onClick={() => history.push("/home")}>

@@ -23,7 +23,6 @@ module.exports = {
         {
           1: function(callback) {
             vm.list(resourceGroupName).then(res => {
-              console.log("hiii");
               if (res.length > 0) {
                 callback(null, res);
               } else {
@@ -57,9 +56,7 @@ module.exports = {
           Object.entries(results).map(([param1, param2]) => {
             store.insertService(param2[0]);
           });
-          // store.serviceList().then(res => response.json(res));
           store.serviceList().then(res => {
-            console.log("list methodd called");
             resolve();
           });
         }

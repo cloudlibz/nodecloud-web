@@ -24,11 +24,13 @@ function login(username, password) {
 
   return fetch(Urls.BASE_URL + Urls.SUB_URL_LOGIN, requestOptions)
     .then(handleResponse)
-    .then(user => {
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem("user", JSON.stringify(user.data));
-      localStorage.setItem("access_token", user.token);
-      return user;
+    .then(res => {
+      if (res.success) {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem("user", JSON.stringify(res.data));
+        localStorage.setItem("access_token", res.token);
+      }
+      return res;
     });
 }
 

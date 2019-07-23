@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { userActions } from "../_actions/user.actions.js";
@@ -14,7 +13,7 @@ class HomePage extends React.Component {
     super(props);
 
     this.state = {
-      selectedService: localStorage.getItem("currentProvider"),
+      selectedService: localStorage.getItem("currentProvider") || "azure",
       user: "",
       showModal: false,
       showSideBar: true,
@@ -44,10 +43,6 @@ class HomePage extends React.Component {
     this.state.user = localStorage.getItem("user");
     this.props.dispatch(userActions.getAll(this.state.selectedService));
   }
-
-  // componentWillUnmount() {
-  //   this.props.onRef(undefined);
-  // }
 
   handleServiceChange(serviceName) {
     localStorage.setItem("currentProvider", serviceName);
