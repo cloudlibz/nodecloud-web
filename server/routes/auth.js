@@ -9,7 +9,9 @@ router.post("/signup", jsonParser, function(req, response) {
   const body = req.body;
   store.signUp(body["email"], body["username"], body["password"]).then(res => {
     const user = res.data;
-    res["token"] = utils.generateToken(user);
+    if (res.success) {
+      res["token"] = utils.generateToken(user);
+    }
     response.json(res);
   });
 });
@@ -18,7 +20,9 @@ router.post("/login", jsonParser, function(req, response) {
   const body = req.body;
   store.login(body["username"], body["password"]).then(res => {
     const user = res.data;
-    res["token"] = utils.generateToken(user);
+    if (res.success) {
+      res["token"] = utils.generateToken(user);
+    }
     response.json(res);
   });
 });

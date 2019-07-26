@@ -22,7 +22,7 @@ module.exports = {
       .returning("id")
       .then(function(id) {
         user["id"] = id[0];
-        const res = { success: true, message: "Login Successful", data: user };
+        const res = { success: true, message: "Signup Successful", data: user };
         return res;
       });
   },
@@ -98,5 +98,9 @@ module.exports = {
         };
         return res;
       });
+  },
+
+  deleteList() {
+    return knex("services").del();
   }
 };

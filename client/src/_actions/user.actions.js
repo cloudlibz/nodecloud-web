@@ -8,6 +8,9 @@ export const userActions = {
   logout,
   register,
   getAll,
+  createVirtualMachine,
+  createVirtualNetwork,
+  createDatabase,
   delete: _delete
 };
 
@@ -94,6 +97,81 @@ function getAll(serviceProvider) {
   }
 }
 
+function createVirtualMachine(params) {
+  return dispatch => {
+    dispatch(request(params));
+    userService.createVirtualMachine(params).then(res => {
+      if (res.success) {
+        dispatch(success(res.data));
+        dispatch(alertActions.success(res.message));
+      } else {
+        dispatch(failure(res.message));
+        dispatch(alertActions.error(res.message));
+      }
+    });
+  };
+
+  function request(params) {
+    return { type: userConstants.CREATE_VIRTUAL_MACHINE_REQUEST, params };
+  }
+  function success(response) {
+    return { type: userConstants.CREATE_VIRTUAL_MACHINE_SUCCESS, response };
+  }
+  function failure(error) {
+    return { type: userConstants.CREATE_VIRTUAL_MACHINE_FAILURE, error };
+  }
+}
+
+function createVirtualNetwork(params) {
+  return dispatch => {
+    dispatch(request(params));
+    userService.createVirtualNetwork(params).then(res => {
+      if (res.success) {
+        dispatch(success(res.data));
+        dispatch(alertActions.success(res.message));
+      } else {
+        dispatch(failure(res.message));
+        dispatch(alertActions.error(res.message));
+      }
+    });
+  };
+
+  function request(params) {
+    return { type: userConstants.CREATE_VIRTUAL_NETWORK_REQUEST, params };
+  }
+  function success(response) {
+    return { type: userConstants.CREATE_VIRTUAL_NETWORK_SUCCESS, response };
+  }
+  function failure(error) {
+    return { type: userConstants.CREATE_VIRTUAL_NETWORK_FAILURE, error };
+  }
+}
+
+function createDatabase(params) {
+  return dispatch => {
+    dispatch(request(params));
+    userService.createDatabase(params).then(res => {
+      if (res.success) {
+        dispatch(success(res.data));
+        dispatch(alertActions.success(res.message));
+      } else {
+        dispatch(failure(res.message));
+        dispatch(alertActions.error(res.message));
+      }
+    });
+  };
+
+  function request(params) {
+    return { type: userConstants.CREATE_DATABASE_REQUEST, params };
+  }
+  function success(response) {
+    return { type: userConstants.CREATE_DATABASE_SUCCESS, response };
+  }
+  function failure(error) {
+    return { type: userConstants.CREATE_DATABASE_FAILURE, error };
+  }
+}
+
 // prefixed function name with underscore because delete is a reserved word in javascript
 function _delete(id) {
   return dispatch => {
@@ -102,6 +180,7 @@ function _delete(id) {
     userService.delete(id).then(
       user => {
         dispatch(success(id));
+        dispatch(alertActions.success(user.message));
       },
       error => {
         dispatch(failure(id, error));

@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Route } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { history } from "../_helpers/history.js";
@@ -8,6 +8,10 @@ import { PrivateRoute } from "../_components/PrivateRoute.js";
 import { HomePage } from "../HomePage/HomePage.js";
 import { LoginPage } from "../LoginPage/LoginPage.js";
 import { SignupPage } from "../SignupPage/SignupPage.js";
+import { VirtualMachine } from "../CreateAzureServices/VirtualMachine.js";
+import { VirtualNetwork } from "../CreateAzureServices/VirtualNetwork.js";
+import { Database } from "../CreateAzureServices/Database.js";
+import { PageNotFound } from "../_helpers/PageNotFound.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -28,10 +32,16 @@ class App extends React.Component {
           <div className={`ui ${alert.type} message`}>{alert.message}</div>
         )}
         <Router history={history}>
-          <PrivateRoute exact path="/" component={HomePage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/home" component={HomePage} />
-          <Route path="/signup" component={SignupPage} />
+          <Switch>
+            <PrivateRoute exact path="/" component={HomePage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/home" component={HomePage} />
+            <Route path="/signup" component={SignupPage} />
+            <Route path="/virtualmachines" component={VirtualMachine} />
+            <Route path="/virtualnetworks" component={VirtualNetwork} />
+            <Route path="/database" component={Database} />
+            <Route component={PageNotFound} />
+          </Switch>
         </Router>
       </div>
     );

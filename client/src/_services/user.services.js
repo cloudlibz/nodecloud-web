@@ -7,6 +7,9 @@ export const userService = {
   logout,
   register,
   getAll,
+  createVirtualMachine,
+  createVirtualNetwork,
+  createDatabase,
   getById,
   update,
   delete: _delete
@@ -21,18 +24,20 @@ function login(username, password) {
 
   return fetch(Urls.BASE_URL + Urls.SUB_URL_LOGIN, requestOptions)
     .then(handleResponse)
-    .then(user => {
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem("user", JSON.stringify(user.data));
-      localStorage.setItem("access_token", user.token);
-      return user;
+    .then(res => {
+      if (res.success) {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem("user", JSON.stringify(res.data));
+        localStorage.setItem("access_token", res.token);
+      }
+      return res;
     });
 }
 
 function logout() {
   // remove user from local storage to log user out
-  console.log("some how logout was called");
   localStorage.removeItem("user");
+  localStorage.removeItem("access_token");
 }
 
 function getAll(serviceProvider) {
@@ -71,6 +76,48 @@ function register(user) {
   );
 }
 
+function createVirtualMachine(params) {
+  params.token = authHeader().token;
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params)
+  };
+
+  return fetch(
+    Urls.BASE_URL + params.provider + Urls.SUB_URL_CREATE_VIRTUAL_MACHINE,
+    requestOptions
+  ).then(handleResponse);
+}
+
+function createVirtualNetwork(params) {
+  params.token = authHeader().token;
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params)
+  };
+
+  return fetch(
+    Urls.BASE_URL + params.provider + Urls.SUB_URL_CREATE_VIRTUAL_NETWORK,
+    requestOptions
+  ).then(handleResponse);
+}
+
+function createDatabase(params) {
+  params.token = authHeader().token;
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params)
+  };
+
+  return fetch(
+    Urls.BASE_URL + params.provider + Urls.SUB_URL_CREATE_DATABASE,
+    requestOptions
+  ).then(handleResponse);
+}
+
 function update(user) {
   const requestOptions = {
     method: "PUT",
@@ -88,12 +135,14 @@ function _delete(id) {
     headers: authHeader()
   };
 
-  return fetch(`/users/${id}`, requestOptions)
+  return fetch(
+    Urls.BASE_URL + Urls.SUB_URL_DELETE + "?id=" + id,
+    requestOptions
+  )
     .then(handleResponse)
     .then(user => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem("user", JSON.stringify(user.data));
-      localStorage.setItem("access_token", user.token);
+      getAll();
       return user;
     });
 }
