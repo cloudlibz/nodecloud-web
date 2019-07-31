@@ -19,49 +19,57 @@ class SideBar extends Component {
 
   render() {
     return (
-      <div>
-        <div
-          class={
-            this.state.visible
-              ? "ui sidebar vertical left menu overlay visible navActive"
-              : "ui sidebar vertical left menu overlay visible"
-          }
-        >
-          <div class="ui accordion">
-            <a class="item" onClick={() => history.push("/home")}>
-              <b>Home</b>
-            </a>
-            <a
-              class="item"
-              onClick={() =>
-                this.changeSelectedDashboardService("virtualmachines")
-              }
-            >
-              Virtual Machines
-            </a>
-            <a
-              class="item"
-              onClick={() =>
-                this.changeSelectedDashboardService("virtualnetworks")
-              }
-            >
-              Virtual Networks
-            </a>
-            <a
-              class="item"
-              onClick={() => this.changeSelectedDashboardService("database")}
-            >
-              Database
-            </a>
-            <a
-              class="item"
-              onClick={() =>
-                this.changeSelectedDashboardService("loadbalancers")
-              }
-            >
-              Load Balancers
-            </a>
-          </div>
+      <div
+        class={
+          this.state.visible
+            ? "ui sidebar vertical left menu overlay visible navActive"
+            : "ui sidebar vertical left menu overlay visible"
+        }
+        id="site-sideBar"
+      >
+        <div class="ui accordion">
+          <a href="#!" class="item" onClick={() => history.push("/home")}>
+            <b>Home</b>
+          </a>
+          <a
+            href="#!"
+            class="item"
+            onClick={() =>
+              this.changeSelectedDashboardService("virtualmachines")
+            }
+          >
+            Virtual Machines
+          </a>
+          <a
+            href="#!"
+            class="item"
+            onClick={() =>
+              this.changeSelectedDashboardService("virtualnetworks")
+            }
+          >
+            Virtual Networks
+          </a>
+          <a
+            href="#!"
+            class="item"
+            onClick={() => this.changeSelectedDashboardService("database")}
+          >
+            Database
+          </a>
+          <a
+            href="#!"
+            class="item"
+            onClick={() => this.changeSelectedDashboardService("storage")}
+          >
+            Storage
+          </a>
+          <a
+            href="#!"
+            class="item"
+            onClick={() => this.changeSelectedDashboardService("security")}
+          >
+            Security
+          </a>
         </div>
       </div>
     );
