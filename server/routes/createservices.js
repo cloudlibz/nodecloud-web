@@ -14,6 +14,7 @@ const network = provider.azure.network();
 //Database
 const sql = provider.azure.sql();
 
+//AZURE
 router.post("/azure/create/virtualmachine", jsonParser, function(
   req,
   response
@@ -159,6 +160,100 @@ router.post("/azure/create/database", jsonParser, function(req, response) {
       .catch(err => {
         console.error(err);
       });
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+//AMAZON WEB SERVICES
+router.post("/aws/create/virtualmachine", jsonParser, function(req, response) {
+  if (utils.validateUser(req.body.token)) {
+    const body = req.body;
+    console.log(body);
+    response.json(res);
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+router.post("/aws/create/virtualnetwork", jsonParser, function(req, response) {
+  if (utils.validateUser(req.body.token)) {
+    const body = req.body;
+    console.log(body);
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+router.post("/aws/create/database", jsonParser, function(req, response) {
+  if (utils.validateUser(req.body.token)) {
+    const body = req.body;
+    console.log(body);
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+router.post("/aws/create/security", jsonParser, function(req, response) {
+  if (utils.validateUser(req.body.token)) {
+    const body = req.body;
+    console.log(body);
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+//GOOGLE CLOUD PLATFORM
+router.post("/gcp/create/virtualmachine", jsonParser, function(req, response) {
+  if (utils.validateUser(req.body.token)) {
+    const body = req.body;
+    console.log(body);
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+router.post("/gcp/create/virtualnetwork", jsonParser, function(req, response) {
+  if (utils.validateUser(req.body.token)) {
+    const body = req.body;
+    console.log(body);
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+router.post("/gcp/create/database", jsonParser, function(req, response) {
+  if (utils.validateUser(req.body.token)) {
+    const body = req.body;
+    console.log(body);
   } else {
     res = {
       success: false,

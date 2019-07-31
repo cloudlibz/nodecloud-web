@@ -11,6 +11,7 @@ import { SignupPage } from "../SignupPage/SignupPage.js";
 import { VirtualMachine } from "../CreateAzureServices/VirtualMachine.js";
 import { VirtualNetwork } from "../CreateAzureServices/VirtualNetwork.js";
 import { Database } from "../CreateAzureServices/Database.js";
+import { Security } from "../CreateAzureServices/Security.js";
 import { PageNotFound } from "../_helpers/PageNotFound.js";
 
 class App extends React.Component {
@@ -40,6 +41,7 @@ class App extends React.Component {
             <Route path="/virtualmachines" component={VirtualMachine} />
             <Route path="/virtualnetworks" component={VirtualNetwork} />
             <Route path="/database" component={Database} />
+            <Route path="/security" component={Security} />
             <Route component={PageNotFound} />
           </Switch>
         </Router>

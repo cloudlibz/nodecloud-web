@@ -11,14 +11,6 @@ const nodeCloud = require("nodecloud");
 
 const provider = nodeCloud.getProviders(null);
 const vm = provider.azure.compute();
-const network = provider.azure.network();
-const blob = provider.azure.blob();
-
-const containerName = "amrita-container";
-const resourceGroupName = "nodecloud";
-const params = {
-  publicAccessLevel: "blob"
-};
 
 router.delete("/delete", async function(req, response) {
   console.log(req.query.id);
@@ -30,21 +22,114 @@ router.delete("/delete", async function(req, response) {
       };
       response.json(res);
     });
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
 
-    // if (req.query.serviceProvider === "azure") {
-    // } else if (req.query.serviceProvider === "aws") {
-    //   res = {
-    //     success: false,
-    //     message: "AWS Services are Under development, Please try again later!"
-    //   };
-    //   response.json(res);
-    // } else if (req.query.serviceProvider === "gcp") {
-    //   res = {
-    //     success: false,
-    //     message: "GCP Services are Under development, Please try again later!"
-    //   };
-    //   response.json(res);
-    // }
+router.delete("azure/delete/virtualmachine", async function(req, response) {
+  console.log(req.query.id);
+  if (utils.validateUser(req.headers.token)) {
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+router.delete("azure/delete/virtualnetwork", async function(req, response) {
+  console.log(req.query.id);
+  if (utils.validateUser(req.headers.token)) {
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+router.delete("azure/delete/database", async function(req, response) {
+  console.log(req.query.id);
+  if (utils.validateUser(req.headers.token)) {
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+router.delete("aws/delete/virtualmachine", async function(req, response) {
+  console.log(req.query.id);
+  if (utils.validateUser(req.headers.token)) {
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+router.delete("aws/delete/virtualnetwork", async function(req, response) {
+  console.log(req.query.id);
+  if (utils.validateUser(req.headers.token)) {
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+router.delete("aws/delete/database", async function(req, response) {
+  console.log(req.query.id);
+  if (utils.validateUser(req.headers.token)) {
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+router.delete("gcp/delete/virtualmachine", async function(req, response) {
+  console.log(req.query.id);
+  if (utils.validateUser(req.headers.token)) {
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+router.delete("gcp/delete/virtualnetwork", async function(req, response) {
+  console.log(req.query.id);
+  if (utils.validateUser(req.headers.token)) {
+  } else {
+    res = {
+      success: false,
+      message: "Invalid token!"
+    };
+    response.json(res);
+  }
+});
+
+router.delete("gcp/delete/database", async function(req, response) {
+  console.log(req.query.id);
+  if (utils.validateUser(req.headers.token)) {
   } else {
     res = {
       success: false,

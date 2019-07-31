@@ -1,5 +1,4 @@
 import { authHeader } from "../_helpers/auth-header.js";
-import { history } from "../_helpers/history.js";
 import { Urls } from "../_helpers/urls.js";
 
 export const userService = {
@@ -10,6 +9,7 @@ export const userService = {
   createVirtualMachine,
   createVirtualNetwork,
   createDatabase,
+  createSecurity,
   getById,
   update,
   delete: _delete
@@ -114,6 +114,20 @@ function createDatabase(params) {
 
   return fetch(
     Urls.BASE_URL + params.provider + Urls.SUB_URL_CREATE_DATABASE,
+    requestOptions
+  ).then(handleResponse);
+}
+
+function createSecurity(params) {
+  params.token = authHeader().token;
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params)
+  };
+
+  return fetch(
+    Urls.BASE_URL + params.provider + Urls.SUB_URL_CREATE_SECURITY,
     requestOptions
   ).then(handleResponse);
 }

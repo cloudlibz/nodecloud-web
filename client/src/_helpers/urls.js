@@ -6,5 +6,6 @@ export const Urls = {
   SUB_URL_CREATE_VIRTUAL_MACHINE: "/create/virtualmachine",
   SUB_URL_CREATE_VIRTUAL_NETWORK: "/create/virtualnetwork",
   SUB_URL_CREATE_DATABASE: "/create/database",
+  SUB_URL_CREATE_SECURITY: "/create/security",
   SUB_URL_DELETE: "delete"
 };

@@ -49,15 +49,16 @@ class NavBar extends Component {
       <div>
         <div class="pusher">
           <div class="ui menu asd borderless">
-            <a class="item openbtn" onClick={this.handleShowSideBar}>
+            <a href="#!" class="item openbtn" onClick={this.handleShowSideBar}>
               <i class="icon content" />
             </a>
             <img
+              alt="Nodecloud logo"
               src={require("../media/nodecloudlogo.png")}
               class="nav-logo"
               onClick={() => history.push("/home")}
             />
-            <a class="item" onClick={() => history.push("/home")}>
+            <a href="#!" class="item" onClick={() => history.push("/home")}>
               {" "}
               Node Cloud
             </a>
@@ -73,8 +74,12 @@ class NavBar extends Component {
               <div class="ui dropdown item">
                 {user["username"]} <i class="dropdown icon" />
                 <div class="menu">
-                  <a class="item">Help</a>
-                  <a class="item">Logout</a>
+                  <a href="#!" class="item">
+                    Help
+                  </a>
+                  <a href="#!" class="item">
+                    Logout
+                  </a>
                 </div>
               </div>
               <div class="item" />

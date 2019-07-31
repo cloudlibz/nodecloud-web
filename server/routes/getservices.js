@@ -58,8 +58,6 @@ router.get("/home", async function(req, response) {
           // }
         },
         function(err, results) {
-          console.log("combined", results);
-
           // results is now equals to: {one: 1, two: 2}
           Object.entries(results).map(([param1, param2]) => {
             console.log("param", typeof param2);

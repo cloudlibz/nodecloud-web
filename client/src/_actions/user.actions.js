@@ -11,6 +11,7 @@ export const userActions = {
   createVirtualMachine,
   createVirtualNetwork,
   createDatabase,
+  createSecurity,
   delete: _delete
 };
 
@@ -169,6 +170,31 @@ function createDatabase(params) {
   }
   function failure(error) {
     return { type: userConstants.CREATE_DATABASE_FAILURE, error };
+  }
+}
+
+function createSecurity(params) {
+  return dispatch => {
+    dispatch(request(params));
+    userService.createSecurity(params).then(res => {
+      if (res.success) {
+        dispatch(success(res.data));
+        dispatch(alertActions.success(res.message));
+      } else {
+        dispatch(failure(res.message));
+        dispatch(alertActions.error(res.message));
+      }
+    });
+  };
+
+  function request(params) {
+    return { type: userConstants.CREATE_SECURITY_REQUEST, params };
+  }
+  function success(response) {
+    return { type: userConstants.CREATE_SECURITY_SUCCESS, response };
+  }
+  function failure(error) {
+    return { type: userConstants.CREATE_SECURITY_FAILURE, error };
   }
 }
 
