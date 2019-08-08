@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducer ALERT CLEAR sets alert to clear 1`] = `
+Object {
+  "otherProp": "test-123",
+}
+`;
+
+exports[`reducer ALERT ERROR sets alert to error 1`] = `
+Object {
+  "otherProp": "test-123",
+}
+`;
+
+exports[`reducer ALERT SUCCESS sets alert to success 1`] = `
+Object {
+  "otherProp": "test-123",
+}
+`;

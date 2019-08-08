@@ -55,13 +55,18 @@ router.post("/azure/create/virtualmachine", jsonParser, function(
         ]
       }
     };
-    vm.createOrUpdate(resourceGroupName, vmName, params)
+    vm.create(resourceGroupName, vmName, params)
       .then(res => {
         console.log(res);
       })
       .catch(err => {
         console.error(err);
       });
+    res = {
+      success: true,
+      message: "Success!"
+    };
+    response.json(res);
   } else {
     res = {
       success: false,
@@ -157,8 +162,20 @@ router.post("/azure/create/database", jsonParser, function(req, response) {
           createDBParams
         );
       })
+      .then(() => {
+        res = {
+          success: true,
+          message: "Successfully created database!"
+        };
+        response.json(res);
+      })
       .catch(err => {
         console.error(err);
+        res = {
+          success: false,
+          message: err
+        };
+        response.json(res);
       });
   } else {
     res = {
@@ -174,6 +191,10 @@ router.post("/aws/create/virtualmachine", jsonParser, function(req, response) {
   if (utils.validateUser(req.body.token)) {
     const body = req.body;
     console.log(body);
+    res = {
+      success: true,
+      message: "Success!"
+    };
     response.json(res);
   } else {
     res = {

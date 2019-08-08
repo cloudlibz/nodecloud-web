@@ -21,7 +21,7 @@ const params = {
 };
 
 router.get("/home", async function(req, response) {
-  console.log("get services called");
+  console.log("get services called", req.query);
   if (utils.validateUser(req.headers.token)) {
     store.deleteList().then(console.log("Delete all called"));
     if (req.query.serviceProvider === "azure") {

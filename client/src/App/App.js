@@ -8,10 +8,10 @@ import { PrivateRoute } from "../_components/PrivateRoute.js";
 import { HomePage } from "../HomePage/HomePage.js";
 import { LoginPage } from "../LoginPage/LoginPage.js";
 import { SignupPage } from "../SignupPage/SignupPage.js";
-import { VirtualMachine } from "../CreateAzureServices/VirtualMachine.js";
-import { VirtualNetwork } from "../CreateAzureServices/VirtualNetwork.js";
-import { Database } from "../CreateAzureServices/Database.js";
-import { Security } from "../CreateAzureServices/Security.js";
+import { VirtualMachine } from "../CreateServices/VirtualMachine.js";
+import { VirtualNetwork } from "../CreateServices/VirtualNetwork.js";
+import { Database } from "../CreateServices/Database.js";
+import { Security } from "../CreateServices/Security.js";
 import { PageNotFound } from "../_helpers/PageNotFound.js";
 
 class App extends React.Component {

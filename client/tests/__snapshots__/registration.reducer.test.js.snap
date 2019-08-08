@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducer REGISTRATION FAILURE sets registration to failure 1`] = `Object {}`;
+
+exports[`reducer REGISTRATION REQUEST sets registration to requesting 1`] = `
+Object {
+  "registering": true,
+}
+`;
+
+exports[`reducer REGISTRATION SUCCESS sets registration to success 1`] = `Object {}`;
