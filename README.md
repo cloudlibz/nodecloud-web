@@ -67,13 +67,13 @@ $ docker-compose up
 # Screenshots
 
 <p align="center">
-  <img src="screenshot/Screenshot_Login.png">
+  <img src="screenshots/Screenshot_Login.png">
 </p>
 <p align="center">
-  <img src="screenshot/Screenshot_Dashboard.png">
+  <img src="screenshots/Screenshot_Dashboard.png">
 </p>
 <p align="center">
-  <img src="screenshot/Screenshot_Create.png">
+  <img src="screenshots/Screenshot_Create.png">
 </p>
 
 # License
