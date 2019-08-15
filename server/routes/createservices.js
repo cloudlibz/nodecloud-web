@@ -5,14 +5,23 @@ const jsonParser = bodyParser.json();
 const store = require("../store");
 const utils = require("../helpers/utils");
 
-const nodeCloud = require("nodecloud");
+// const nodeCloud = require("nodecloud");
 const provider = nodeCloud.getProviders(null);
 //Virtual Machine
 const vm = provider.azure.compute();
+// const ncAWS = nodeCloud.getProvider('AWS', process.env.ncconf);
+// const options = {
+//   apiVersion: '2016-11-15',
+// };
+// const ec2 = ncAWS.compute(options);
+// const ecs = ncAWS.container(options);
+
 //Virtual Network
 const network = provider.azure.network();
 //Database
 const sql = provider.azure.sql();
+// const dynamo = ncAWS.nosql(options);
+// const rdb = ncAWS.rdbms(options);
 
 //AZURE
 router.post("/azure/create/virtualmachine", jsonParser, function(
@@ -190,12 +199,51 @@ router.post("/azure/create/database", jsonParser, function(req, response) {
 router.post("/aws/create/virtualmachine", jsonParser, function(req, response) {
   if (utils.validateUser(req.body.token)) {
     const body = req.body;
-    console.log(body);
-    res = {
-      success: true,
-      message: "Success!"
-    };
-    response.json(res);
+    if (body.awsType === "EC2") {
+      const params = {
+        ImageId: "ami-090f10efc254eaf55",
+        InstanceType: "t2.micro",
+        MinCount: 1,
+        MaxCount: 1
+      };
+      const instanceParams = {
+        Key: "Name",
+        Value: program.vmName
+      };
+
+      ec2
+        .create(params, instanceParams)
+        .then(res => {
+          console.log(body);
+          res = {
+            success: true,
+            message: "Success!"
+          };
+          response.json(res);
+        })
+        .catch(err => {
+          console.error(err);
+          res = {
+            success: false,
+            message: err
+          };
+          response.json(res);
+        });
+    } else if (body.awsType === "ECS") {
+      const params = {
+        clusters: ["default"]
+      };
+
+      // describe ECS clusters
+      ecs
+        .describeClusters(params)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
   } else {
     res = {
       success: false,
@@ -222,6 +270,8 @@ router.post("/aws/create/database", jsonParser, function(req, response) {
   if (utils.validateUser(req.body.token)) {
     const body = req.body;
     console.log(body);
+    if (body.awsType === "DynamoDB") {
+    }
   } else {
     res = {
       success: false,

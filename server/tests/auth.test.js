@@ -1,73 +1,42 @@
-const request = require("supertest");
-const auth = require("../routes/auth");
-const getservices = require("../routes/getservices");
+const supertest = require("supertest");
+const app = require("../server");
 
-jest.setTimeout(30000);
-// describe("POST /login", () => {
-//   test("It responds login response", async function() {
-//     const requestBody = {
-//       username: "guest",
-//       password: "a"
-//     };
+let request;
+request = supertest(app);
 
-//     await request(auth)
-//       .post("/login")
-//       .send(requestBody)
-//       .expect(200);
-
-//     // const response = await request(auth)
-//     //   .post("/login")
-//     //   .send(requestBody);
-
-//     // expect("Content-Type", /json/);
-//     // expect(response.statusCode).toBe(200);
-//     // done();
-//   });
-// });
-
-describe("GET /home", () => {
-  test("It responds get data", async function() {
+describe("POST /login", () => {
+  it("It responds login response", function(done) {
     const requestBody = {
-      serviceProvider: "aws",
-      token:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtcml0YWNoYXR1cnZlZGk5N0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFtcml0YSIsImlhdCI6MTU2NDU0NjgwOSwiZXhwIjoxNTk2MDgyODA5fQ.CiUxyaSewlYcBzJCgULUynZKTZPg6kWdhORukxVrgtI"
+      username: "guest",
+      password: "a"
     };
-    const reponse = await request(getservices)
-      .get("/home")
-      .set("Content-Type", "application/json")
-      .set(requestBody)
+
+    request
+      .post("/login")
       .send(requestBody)
-      .expect("Content-Type", /json/)
       .expect(200)
       .end(function(err, res) {
-        if (err) throw err;
+        console.log(res.statusCode);
+        done();
       });
   });
 });
 
-// describe("POST /signup", () => {
-//   test("It responds signup response", async function() {
-//     const requestBody = {
-//       email: "test@test.test",
-//       username: "test",
-//       password: "a"
-//     };
+describe("POST /signup", () => {
+  it("It responds signup response", function(done) {
+    const requestBody = {
+      username: "guest",
+      email: "guest@guest.com",
+      password: "a"
+    };
 
-//     const response = await request(auth)
-//       .post("/signup")
-//       .send(requestBody);
-
-//     expect("Content-Type", /json/);
-//     expect(response.statusCode).toBe(200);
-//     done();
-//   });
-// });
-
-// a helper function to make a POST request
-// var post = function(url, body) {
-//   const httpRequest = request(auth).post(url);
-//   httpRequest.send(body);
-//   httpRequest.set("Accept", "application/json");
-//   httpRequest.set("Origin", "http://localhost:4000");
-//   return httpRequest;
-// };
+    request
+      .post("/signup")
+      .send(requestBody)
+      .expect(200)
+      .end(function(err, res) {
+        console.log(res.statusCode);
+        done();
+      });
+  });
+});

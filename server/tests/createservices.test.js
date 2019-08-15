@@ -1,77 +1,111 @@
-const request = require("supertest");
-const createservices = require("../routes/createservices");
+const supertest = require("supertest");
+const app = require("../server");
 
-// describe("POST /azure/create/virtualmachine", () => {
-//   test("It responds with newly created azure virtual machine", async () => {
-//     const requestBody = {
-//       provider: "azure",
-//       "Resource group": "l",
-//       "Virtual machine name": "ol",
-//       Location: "centralus",
-//       "OS Type": "linux",
-//       token:
-//         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtcml0YWNoYXR1cnZlZGk5N0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFtcml0YSIsImlhdCI6MTU2NDU0NjgwOSwiZXhwIjoxNTk2MDgyODA5fQ.CiUxyaSewlYcBzJCgULUynZKTZPg6kWdhORukxVrgtI"
-//     };
+let request;
+request = supertest(app);
 
-//     const response = await request(createservices)
-//       .post("/azure/create/virtualmachine")
-//       .send(requestBody);
+describe("GET /home", () => {
+  it("It responds get data", function(done) {
+    const requestBody = {
+      serviceProvider: "aws",
+      token:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtcml0YWNoYXR1cnZlZGk5N0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFtcml0YSIsImlhdCI6MTU2NDU0NjgwOSwiZXhwIjoxNTk2MDgyODA5fQ.CiUxyaSewlYcBzJCgULUynZKTZPg6kWdhORukxVrgtI"
+    };
 
-//     expect("Content-Type", /json/);
-//     expect(response.statusCode).toBe(200);
-//   });
-// });
+    request
+      .get("/home")
+      .set("Content-Type", "application/json")
+      .set(requestBody)
+      .send(requestBody)
+      .expect("Content-Type", /json/)
+      .expect(200)
+      .end(function(err, res) {
+        console.log(res);
+        done();
+      });
+  });
+});
 
-// describe("POST /azure/create/virtualnetwork", () => {
-//   test("It responds with newly created azure virtual network", async () => {
-//     const requestBody = {
-//       provider: "azure",
-//       "Resource group": "re",
-//       "Virtual network name": "k",
-//       "Subnet name": "k",
-//       "Security group name": "k",
-//       "Loadbalancer name": "k",
-//       Location: "centralus",
-//       "Address Space": "m",
-//       token:
-//         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtcml0YWNoYXR1cnZlZGk5N0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFtcml0YSIsImlhdCI6MTU2NDU0NjgwOSwiZXhwIjoxNTk2MDgyODA5fQ.CiUxyaSewlYcBzJCgULUynZKTZPg6kWdhORukxVrgtI"
-//     };
+describe("POST /azure/create/virtualmachine", () => {
+  it("It responds with newly created azure virtual machine", function(done) {
+    const requestBody = {
+      provider: "azure",
+      "Resource group": "l",
+      "Virtual machine name": "ol",
+      Location: "centralus",
+      "OS Type": "linux",
+      token:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtcml0YWNoYXR1cnZlZGk5N0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFtcml0YSIsImlhdCI6MTU2NDU0NjgwOSwiZXhwIjoxNTk2MDgyODA5fQ.CiUxyaSewlYcBzJCgULUynZKTZPg6kWdhORukxVrgtI"
+    };
 
-//     const response = await request(createservices)
-//       .post("/azure/create/virtualnetwork")
-//       .send(requestBody);
+    request
+      .post("/azure/create/virtualmachine")
+      .send(requestBody)
+      .expect("Content-Type", /json/)
+      .expect(200)
+      .end(function(err, res) {
+        console.log(res);
+        done();
+      });
+  });
+});
 
-//     expect("Content-Type", /json/);
-//     expect(response.statusCode).toBe(200);
-//   });
-// });
+describe("POST /azure/create/virtualnetwork", () => {
+  it("It responds with newly created azure virtual network", function(done) {
+    const requestBody = {
+      provider: "azure",
+      "Resource group": "re",
+      "Virtual network name": "k",
+      "Subnet name": "k",
+      "Security group name": "k",
+      "Loadbalancer name": "k",
+      Location: "centralus",
+      "Address Space": "m",
+      token:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtcml0YWNoYXR1cnZlZGk5N0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFtcml0YSIsImlhdCI6MTU2NDU0NjgwOSwiZXhwIjoxNTk2MDgyODA5fQ.CiUxyaSewlYcBzJCgULUynZKTZPg6kWdhORukxVrgtI"
+    };
 
-// describe("POST /azure/create/database", () => {
-//   test("It responds with newly created azure databse", async function() {
-//     const requestBody = {
-//       provider: "azure",
-//       "Resource group": "k",
-//       "Server name": "k",
-//       "Database name": "k",
-//       "Administrator Login": "k",
-//       "Administrator Password": "k",
-//       Version: "k",
-//       Location: "centralus",
-//       token:
-//         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtcml0YWNoYXR1cnZlZGk5N0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFtcml0YSIsImlhdCI6MTU2NDU0NjgwOSwiZXhwIjoxNTk2MDgyODA5fQ.CiUxyaSewlYcBzJCgULUynZKTZPg6kWdhORukxVrgtI"
-//     };
+    request
+      .post("/azure/create/virtualnetwork")
+      .send(requestBody)
+      .expect("Content-Type", /json/)
+      .expect(200)
+      .end(function(err, res) {
+        console.log(res);
+        done();
+      });
+  });
+});
 
-//     const response = await request(createservices)
-//       .post("/azure/create/database")
-//       .send(requestBody);
+describe("POST /azure/create/database", () => {
+  it("It responds with newly created azure databse", function(done) {
+    const requestBody = {
+      provider: "azure",
+      "Resource group": "k",
+      "Server name": "k",
+      "Database name": "k",
+      "Administrator Login": "k",
+      "Administrator Password": "k",
+      Version: "k",
+      Location: "centralus",
+      token:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtcml0YWNoYXR1cnZlZGk5N0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFtcml0YSIsImlhdCI6MTU2NDU0NjgwOSwiZXhwIjoxNTk2MDgyODA5fQ.CiUxyaSewlYcBzJCgULUynZKTZPg6kWdhORukxVrgtI"
+    };
 
-//     expect("Content-Type", /json/);
-//     expect(response.statusCode).toBe(200);
-//   }, 30000);
-// });
+    request
+      .post("/azure/create/database")
+      .send(requestBody)
+      .expect("Content-Type", /json/)
+      .expect(200)
+      .end(function(err, res) {
+        console.log(res);
+        done();
+      });
+  });
+});
 
 describe("POST /aws/create/virtualmachine", () => {
-  test("It responds with newly created aws virtual machine", async function() {
+  it("It responds with newly created aws virtual machine", function(done) {
     const requestBody = {
       awsType: "ECS",
       provider: "aws",
@@ -84,17 +118,20 @@ describe("POST /aws/create/virtualmachine", () => {
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtcml0YWNoYXR1cnZlZGk5N0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFtcml0YSIsImlhdCI6MTU2NDU0NjgwOSwiZXhwIjoxNTk2MDgyODA5fQ.CiUxyaSewlYcBzJCgULUynZKTZPg6kWdhORukxVrgtI"
     };
 
-    const response = await request(createservices)
+    request
       .post("/aws/create/virtualmachine")
-      .send(requestBody);
-
-    expect("Content-Type", /json/);
-    expect(response.statusCode).toBe(200);
-  }, 30000);
+      .send(requestBody)
+      .expect("Content-Type", /json/)
+      .expect(200)
+      .end(function(err, res) {
+        console.log(res);
+        done();
+      });
+  });
 });
 
 describe("POST /aws/create/virtualnetwork", () => {
-  test("It responds with newly created aws virtual network", async function() {
+  it("It responds with newly created aws virtual network", function(done) {
     const requestBody = {
       provider: "aws",
       Engine: "ECS",
@@ -107,17 +144,20 @@ describe("POST /aws/create/virtualnetwork", () => {
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtcml0YWNoYXR1cnZlZGk5N0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFtcml0YSIsImlhdCI6MTU2NDU0NjgwOSwiZXhwIjoxNTk2MDgyODA5fQ.CiUxyaSewlYcBzJCgULUynZKTZPg6kWdhORukxVrgtI"
     };
 
-    const response = await request(createservices)
+    request
       .post("/aws/create/virtualnetwork")
-      .send(requestBody);
-
-    expect("Content-Type", /json/);
-    expect(response.statusCode).toBe(200);
-  }, 30000);
+      .send(requestBody)
+      .expect("Content-Type", /json/)
+      .expect(200)
+      .end(function(err, res) {
+        console.log(res);
+        done();
+      });
+  });
 });
 
 describe("POST /aws/create/database", () => {
-  test("It responds with newly created aws databse", async function() {
+  it("It responds with newly created aws database", function(done) {
     const requestBody = {
       awsType: "RDS",
       provider: "aws",
@@ -134,11 +174,14 @@ describe("POST /aws/create/database", () => {
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtcml0YWNoYXR1cnZlZGk5N0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFtcml0YSIsImlhdCI6MTU2NDU0NjgwOSwiZXhwIjoxNTk2MDgyODA5fQ.CiUxyaSewlYcBzJCgULUynZKTZPg6kWdhORukxVrgtI"
     };
 
-    const response = await request(createservices)
+    request
       .post("/aws/create/database")
-      .send(requestBody);
-
-    expect("Content-Type", /json/);
-    expect(response.statusCode).toBe(200);
-  }, 30000);
+      .send(requestBody)
+      .expect("Content-Type", /json/)
+      .expect(200)
+      .end(function(err, res) {
+        console.log(res);
+        done();
+      });
+  });
 });
