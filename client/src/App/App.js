@@ -25,7 +25,6 @@ class App extends React.Component {
     });
   }
   render() {
-    console.log("In app.js");
     const { alert } = this.props;
     return (
       <div>
