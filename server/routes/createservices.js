@@ -5,7 +5,7 @@ const jsonParser = bodyParser.json();
 const store = require("../store");
 const utils = require("../helpers/utils");
 
-// const nodeCloud = require("nodecloud");
+const nodeCloud = require("nodecloud");
 const provider = nodeCloud.getProviders(null);
 //Virtual Machine
 const vm = provider.azure.compute();

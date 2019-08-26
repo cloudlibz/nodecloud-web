@@ -4,28 +4,6 @@ const app = require("../server");
 let request;
 request = supertest(app);
 
-describe("GET /home", () => {
-  it("It responds get data", function(done) {
-    const requestBody = {
-      serviceProvider: "aws",
-      token:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtcml0YWNoYXR1cnZlZGk5N0BnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFtcml0YSIsImlhdCI6MTU2NDU0NjgwOSwiZXhwIjoxNTk2MDgyODA5fQ.CiUxyaSewlYcBzJCgULUynZKTZPg6kWdhORukxVrgtI"
-    };
-
-    request
-      .get("/home")
-      .set("Content-Type", "application/json")
-      .set(requestBody)
-      .send(requestBody)
-      .expect("Content-Type", /json/)
-      .expect(200)
-      .end(function(err, res) {
-        console.log(res);
-        done();
-      });
-  });
-});
-
 describe("POST /azure/create/virtualmachine", () => {
   it("It responds with newly created azure virtual machine", function(done) {
     const requestBody = {
@@ -44,7 +22,6 @@ describe("POST /azure/create/virtualmachine", () => {
       .expect("Content-Type", /json/)
       .expect(200)
       .end(function(err, res) {
-        console.log(res);
         done();
       });
   });
@@ -71,7 +48,6 @@ describe("POST /azure/create/virtualnetwork", () => {
       .expect("Content-Type", /json/)
       .expect(200)
       .end(function(err, res) {
-        console.log(res);
         done();
       });
   });
@@ -98,7 +74,6 @@ describe("POST /azure/create/database", () => {
       .expect("Content-Type", /json/)
       .expect(200)
       .end(function(err, res) {
-        console.log(res);
         done();
       });
   });
@@ -124,7 +99,6 @@ describe("POST /aws/create/virtualmachine", () => {
       .expect("Content-Type", /json/)
       .expect(200)
       .end(function(err, res) {
-        console.log(res);
         done();
       });
   });
@@ -150,7 +124,6 @@ describe("POST /aws/create/virtualnetwork", () => {
       .expect("Content-Type", /json/)
       .expect(200)
       .end(function(err, res) {
-        console.log(res);
         done();
       });
   });
@@ -180,7 +153,6 @@ describe("POST /aws/create/database", () => {
       .expect("Content-Type", /json/)
       .expect(200)
       .end(function(err, res) {
-        console.log(res);
         done();
       });
   });

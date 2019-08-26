@@ -1,12 +1,17 @@
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import * as actions from "../src/_actions/user.actions";
+import { shallow } from "enzyme";
 import * as types from "../src/_constants/user.constants";
 import * as services from "../src/_services/user.services";
+import * as actions from "../src/_actions/user.actions";
 import fetchMock from "fetch-mock";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
+
+beforeAll(() => {
+  global.fetch = jest.fn();
+});
 
 describe("register actions", () => {
   afterEach(() => {
@@ -29,10 +34,9 @@ describe("register actions", () => {
       { type: types.REGISTER_REQUEST },
       { type: types.REGISTER_SUCCESS, body: { todos: ["do something"] } }
     ];
-    const store = mockStore({ todos: [] });
 
-    console.log(services.register(user));
-    return store.dispatch(services.register(user)).then(() => {
+    const store = mockStore({ todos: [] });
+    return store.dispatch(actions.register(user)).then(() => {
       // return of async actions
       expect(store.getActions()).toEqual(expectedActions);
     });

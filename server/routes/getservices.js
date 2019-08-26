@@ -29,7 +29,6 @@ router.get("/home", async function(req, response) {
         {
           1: function(callback) {
             vm.list(resourceGroupName).then(res => {
-              console.log("vm", res);
               if (res.length > 0) {
                 callback(null, res);
               } else {
