@@ -9,14 +9,14 @@ Making open cloud easily accessible and managed.
 
 ![screenshot](screenshots/screenrecord.gif)
 
-# clone or download
+## clone or download
 
 ```sh
 $ git clone https://github.com/cloudlibz/nodecloud-web.git
 $ npm i
 ```
 
-# Project Structure
+## Project Structure
 
 ```
 server/
@@ -27,9 +27,9 @@ client/
 ...
 ```
 
-# Usage (run fullstack app on your machine)
+## Usage (run fullstack app on your machine)
 
-# Client Side (PORT: 8081)
+## Client Side (PORT: 8081)
 
 ```sh
 $ cd client   // go to client folder
@@ -39,13 +39,13 @@ $ npm i       // npm install pacakges
 $ npm start // this will compile the react code using webpack and run them at port 8081 by default
 ```
 
-# Server Side (PORT: 4000)
+## Server Side (PORT: 4000)
 
-# Prepare your secret
+## Prepare your secret
 
 You need to add a JWT_SECRET in .env
 
-# Start
+## Start
 
 ```sh
 $ cd server   // go to server folder
@@ -53,18 +53,18 @@ $ npm i       // npm install pacakges
 $ npm run // this will build the server code
 ```
 
-# Docker
+## Docker
 
 ```sh
 $ cd nodecloud-web
 $ docker-compose up
 ```
 
-# API Documentation
+## API Documentation
 
 [API docs](https://app.swaggerhub.com/apis/amrita019/nodecloud-web/1.0.0)
 
-# Screenshots
+## Screenshots
 
 <p align="center">
   <img src="screenshots/Screenshot_Login.png">
@@ -76,6 +76,6 @@ $ docker-compose up
   <img src="screenshots/Screenshot_Create.png">
 </p>
 
-# License
+## License
 
 MIT
