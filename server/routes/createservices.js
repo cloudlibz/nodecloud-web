@@ -9,10 +9,19 @@ const nodeCloud = require("nodecloud");
 const provider = nodeCloud.getProviders(null);
 //Virtual Machine
 const vm = provider.azure.compute();
+// const ncAWS = nodeCloud.getProvider('AWS', process.env.ncconf);
+// const options = {
+//   apiVersion: '2016-11-15',
+// };
+// const ec2 = ncAWS.compute(options);
+// const ecs = ncAWS.container(options);
+
 //Virtual Network
 const network = provider.azure.network();
 //Database
 const sql = provider.azure.sql();
+// const dynamo = ncAWS.nosql(options);
+// const rdb = ncAWS.rdbms(options);
 
 //AZURE
 router.post("/azure/create/virtualmachine", jsonParser, function(
@@ -55,13 +64,18 @@ router.post("/azure/create/virtualmachine", jsonParser, function(
         ]
       }
     };
-    vm.createOrUpdate(resourceGroupName, vmName, params)
+    vm.create(resourceGroupName, vmName, params)
       .then(res => {
         console.log(res);
       })
       .catch(err => {
         console.error(err);
       });
+    res = {
+      success: true,
+      message: "Success!"
+    };
+    response.json(res);
   } else {
     res = {
       success: false,
@@ -77,7 +91,6 @@ router.post("/azure/create/virtualnetwork", jsonParser, function(
 ) {
   if (utils.validateUser(req.body.token)) {
     const body = req.body;
-    console.log(body);
     const resourceGroupName = body["Resource group"];
     const networkName = body["Virtual network name"];
     const subnetName = body["Subnet name"];
@@ -131,7 +144,6 @@ router.post("/azure/create/virtualnetwork", jsonParser, function(
 router.post("/azure/create/database", jsonParser, function(req, response) {
   if (utils.validateUser(req.body.token)) {
     const body = req.body;
-    console.log(body);
     const resourceGroupName = body["Resource group"];
     const serverName = body["Server name"];
     const databaseName = body["Database name"];
@@ -149,7 +161,6 @@ router.post("/azure/create/database", jsonParser, function(req, response) {
     sql
       .createOrUpdateDBInstance(resourceGroupName, serverName, params)
       .then(res => {
-        console.log("Database Server Created.");
         return sql.createOrUpdateDatabase(
           resourceGroupName,
           serverName,
@@ -157,8 +168,20 @@ router.post("/azure/create/database", jsonParser, function(req, response) {
           createDBParams
         );
       })
+      .then(() => {
+        res = {
+          success: true,
+          message: "Successfully created database!"
+        };
+        response.json(res);
+      })
       .catch(err => {
         console.error(err);
+        res = {
+          success: false,
+          message: err
+        };
+        response.json(res);
       });
   } else {
     res = {
@@ -173,8 +196,50 @@ router.post("/azure/create/database", jsonParser, function(req, response) {
 router.post("/aws/create/virtualmachine", jsonParser, function(req, response) {
   if (utils.validateUser(req.body.token)) {
     const body = req.body;
-    console.log(body);
-    response.json(res);
+    if (body.awsType === "EC2") {
+      const params = {
+        ImageId: "ami-090f10efc254eaf55",
+        InstanceType: "t2.micro",
+        MinCount: 1,
+        MaxCount: 1
+      };
+      const instanceParams = {
+        Key: "Name",
+        Value: program.vmName
+      };
+
+      ec2
+        .create(params, instanceParams)
+        .then(res => {
+          res = {
+            success: true,
+            message: "Success!"
+          };
+          response.json(res);
+        })
+        .catch(err => {
+          console.error(err);
+          res = {
+            success: false,
+            message: err
+          };
+          response.json(res);
+        });
+    } else if (body.awsType === "ECS") {
+      const params = {
+        clusters: ["default"]
+      };
+
+      // describe ECS clusters
+      ecs
+        .describeClusters(params)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
   } else {
     res = {
       success: false,
@@ -187,7 +252,6 @@ router.post("/aws/create/virtualmachine", jsonParser, function(req, response) {
 router.post("/aws/create/virtualnetwork", jsonParser, function(req, response) {
   if (utils.validateUser(req.body.token)) {
     const body = req.body;
-    console.log(body);
   } else {
     res = {
       success: false,
@@ -200,7 +264,8 @@ router.post("/aws/create/virtualnetwork", jsonParser, function(req, response) {
 router.post("/aws/create/database", jsonParser, function(req, response) {
   if (utils.validateUser(req.body.token)) {
     const body = req.body;
-    console.log(body);
+    if (body.awsType === "DynamoDB") {
+    }
   } else {
     res = {
       success: false,
@@ -213,7 +278,6 @@ router.post("/aws/create/database", jsonParser, function(req, response) {
 router.post("/aws/create/security", jsonParser, function(req, response) {
   if (utils.validateUser(req.body.token)) {
     const body = req.body;
-    console.log(body);
   } else {
     res = {
       success: false,
@@ -227,7 +291,6 @@ router.post("/aws/create/security", jsonParser, function(req, response) {
 router.post("/gcp/create/virtualmachine", jsonParser, function(req, response) {
   if (utils.validateUser(req.body.token)) {
     const body = req.body;
-    console.log(body);
   } else {
     res = {
       success: false,
@@ -240,7 +303,6 @@ router.post("/gcp/create/virtualmachine", jsonParser, function(req, response) {
 router.post("/gcp/create/virtualnetwork", jsonParser, function(req, response) {
   if (utils.validateUser(req.body.token)) {
     const body = req.body;
-    console.log(body);
   } else {
     res = {
       success: false,
@@ -253,7 +315,6 @@ router.post("/gcp/create/virtualnetwork", jsonParser, function(req, response) {
 router.post("/gcp/create/database", jsonParser, function(req, response) {
   if (utils.validateUser(req.body.token)) {
     const body = req.body;
-    console.log(body);
   } else {
     res = {
       success: false,

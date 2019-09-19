@@ -46,19 +46,73 @@ export function users(state = {}, action) {
         //   return user;
         // })
       };
-    case userConstants.CREATE_VM_REQUEST:
+    case userConstants.CREATE_VIRTUAL_MACHINE_REQUEST:
       // add 'deleting:true' property to user being deleted
       return {
         loading: true
       };
-    case userConstants.CREATE_VM_SUCCESS:
+    case userConstants.CREATE_VIRTUAL_MACHINE_SUCCESS:
       // remove deleted user from state
       return {
         ...state,
         loading: false,
         items: action.services
       };
-    case userConstants.CREATE_VM_FAILURE:
+    case userConstants.CREATE_VIRTUAL_MACHINE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+    case userConstants.CREATE_VIRTUAL_NETWORK_REQUEST:
+      // add 'deleting:true' property to user being deleted
+      return {
+        loading: true
+      };
+    case userConstants.CREATE_VIRTUAL_NETWORK_SUCCESS:
+      // remove deleted user from state
+      return {
+        ...state,
+        loading: false,
+        items: action.services
+      };
+    case userConstants.CREATE_VIRTUAL_NETWORK_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+    case userConstants.CREATE_DATABASE_REQUEST:
+      // add 'deleting:true' property to user being deleted
+      return {
+        loading: true
+      };
+    case userConstants.CREATE_DATABASE_SUCCESS:
+      // remove deleted user from state
+      return {
+        ...state,
+        loading: false,
+        items: action.services
+      };
+    case userConstants.CREATE_DATABASE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+    case userConstants.CREATE_SECURITY_REQUEST:
+      // add 'deleting:true' property to user being deleted
+      return {
+        loading: true
+      };
+    case userConstants.CREATE_SECURITY_SUCCESS:
+      // remove deleted user from state
+      return {
+        ...state,
+        loading: false,
+        items: action.services
+      };
+    case userConstants.CREATE_SECURITY_FAILURE:
       return {
         ...state,
         loading: false,

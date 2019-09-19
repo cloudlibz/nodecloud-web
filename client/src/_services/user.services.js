@@ -163,7 +163,6 @@ function _delete(id) {
 
 function handleResponse(response) {
   return response.text().then(text => {
-    console.log(response);
     const data = text && JSON.parse(text);
     if (!response.ok) {
       if (response.status === 401) {

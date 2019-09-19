@@ -21,7 +21,6 @@ const params = {
 };
 
 router.get("/home", async function(req, response) {
-  console.log("get services called");
   if (utils.validateUser(req.headers.token)) {
     store.deleteList().then(console.log("Delete all called"));
     if (req.query.serviceProvider === "azure") {
@@ -29,7 +28,6 @@ router.get("/home", async function(req, response) {
         {
           1: function(callback) {
             vm.list(resourceGroupName).then(res => {
-              console.log("vm", res);
               if (res.length > 0) {
                 callback(null, res);
               } else {
@@ -39,7 +37,6 @@ router.get("/home", async function(req, response) {
           },
           2: function(callback) {
             network.list(resourceGroupName).then(res => {
-              console.log("vn", res);
               if (res.length > 0) {
                 callback(null, res);
               } else {
@@ -60,8 +57,6 @@ router.get("/home", async function(req, response) {
         function(err, results) {
           // results is now equals to: {one: 1, two: 2}
           Object.entries(results).map(([param1, param2]) => {
-            console.log("param", typeof param2);
-            console.log("param2[0]", param2[0]);
             if (Object.keys(param2).length !== 0) {
               store.insertService(param2[0]);
             }
