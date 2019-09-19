@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducer CREATE DATBASE FAILURE sets create database to failure 1`] = `
+Object {
+  "otherProp": "test-123",
+}
+`;
+
+exports[`reducer CREATE DATBASE REQUEST sets create database to requesting 1`] = `
+Object {
+  "otherProp": "test-123",
+}
+`;
+
+exports[`reducer CREATE DATBASE SUCCESS sets create database to success 1`] = `
+Object {
+  "otherProp": "test-123",
+}
+`;
+
+exports[`reducer CREATE SECURITY FAILURE sets create security to failure 1`] = `
+Object {
+  "error": undefined,
+  "loading": false,
+  "otherProp": "test-123",
+}
+`;
+
+exports[`reducer CREATE SECURITY REQUEST sets create security to requesting 1`] = `
+Object {
+  "loading": true,
+}
+`;
+
+exports[`reducer CREATE SECURITY SUCCESS sets create security to success 1`] = `
+Object {
+  "items": undefined,
+  "loading": false,
+  "otherProp": "test-123",
+}
+`;
+
+exports[`reducer CREATE VIRTUAL MACHINE FAILURE sets create virtual machine to failure 1`] = `
+Object {
+  "error": undefined,
+  "loading": false,
+  "otherProp": "test-123",
+}
+`;
+
+exports[`reducer CREATE VIRTUAL MACHINE REQUEST sets create virtual machine to requesting 1`] = `
+Object {
+  "loading": true,
+}
+`;
+
+exports[`reducer CREATE VIRTUAL MACHINE SUCCESS sets create virtual machine to success 1`] = `
+Object {
+  "items": undefined,
+  "loading": false,
+  "otherProp": "test-123",
+}
+`;
+
+exports[`reducer CREATE VIRTUAL NETWORK FAILURE sets create virtual network to failure 1`] = `
+Object {
+  "error": undefined,
+  "loading": false,
+  "otherProp": "test-123",
+}
+`;
+
+exports[`reducer CREATE VIRTUAL NETWORK REQUEST sets create virtual network to requesting 1`] = `
+Object {
+  "loading": true,
+}
+`;
+
+exports[`reducer CREATE VIRTUAL NETWORK SUCCESS sets create virtual network to success 1`] = `
+Object {
+  "items": undefined,
+  "loading": false,
+  "otherProp": "test-123",
+}
+`;
+
+exports[`reducer DELETE FAILURE sets delete to failure 1`] = `
+Object {
+  "error": undefined,
+  "loading": false,
+  "otherProp": "test-123",
+}
+`;
+
+exports[`reducer DELETE REQUEST sets delete to requesting 1`] = `
+Object {
+  "loading": true,
+}
+`;
+
+exports[`reducer DELETE SUCCESS sets delete to success 1`] = `
+Object {
+  "items": undefined,
+  "loading": false,
+  "otherProp": "test-123",
+}
+`;
+
+exports[`reducer GETALL FAILURE sets getall to failure 1`] = `
+Object {
+  "error": undefined,
+  "loading": false,
+}
+`;
+
+exports[`reducer GETALL REQUEST sets getall to requesting 1`] = `
+Object {
+  "loading": true,
+}
+`;
+
+exports[`reducer GETALL SUCCESS sets getall to success 1`] = `
+Object {
+  "items": undefined,
+  "loading": false,
+  "otherProp": "test-123",
+}
+`;

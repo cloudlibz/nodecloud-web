@@ -21,6 +21,16 @@ app.get("/", function(req, res) {
   return res.redirect("/login");
 });
 
-app.listen(app.get("port"), () => {
+var server = app.listen(app.get("port"), () => {
   console.log("Listening to port: ", app.get("port"));
 });
+
+// server.close(function(err) {
+//   if (err) {
+//     console.log(err);
+//     //process.exit(1);
+//   } else {
+//     //process.exit(0);
+//   }
+// });
+module.exports = server;

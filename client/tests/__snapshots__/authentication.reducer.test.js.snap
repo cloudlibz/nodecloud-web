@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducer LOGIN FAILURE sets login to failure 1`] = `Object {}`;
+
+exports[`reducer LOGIN REQUEST sets login to requesting 1`] = `
+Object {
+  "loggingIn": true,
+  "user": undefined,
+}
+`;
+
+exports[`reducer LOGIN SUCCESS sets login to success 1`] = `
+Object {
+  "loggedIn": true,
+  "user": undefined,
+}
+`;

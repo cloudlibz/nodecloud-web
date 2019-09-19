@@ -13,7 +13,6 @@ const provider = nodeCloud.getProviders(null);
 const vm = provider.azure.compute();
 
 router.delete("/delete", async function(req, response) {
-  console.log(req.query.id);
   if (utils.validateUser(req.headers.token)) {
     vm.destroy("nodecloud", req.query.id).then(resp => {
       res = {
@@ -32,7 +31,6 @@ router.delete("/delete", async function(req, response) {
 });
 
 router.delete("azure/delete/virtualmachine", async function(req, response) {
-  console.log(req.query.id);
   if (utils.validateUser(req.headers.token)) {
   } else {
     res = {
@@ -44,7 +42,6 @@ router.delete("azure/delete/virtualmachine", async function(req, response) {
 });
 
 router.delete("azure/delete/virtualnetwork", async function(req, response) {
-  console.log(req.query.id);
   if (utils.validateUser(req.headers.token)) {
   } else {
     res = {
@@ -56,7 +53,6 @@ router.delete("azure/delete/virtualnetwork", async function(req, response) {
 });
 
 router.delete("azure/delete/database", async function(req, response) {
-  console.log(req.query.id);
   if (utils.validateUser(req.headers.token)) {
   } else {
     res = {
@@ -68,7 +64,6 @@ router.delete("azure/delete/database", async function(req, response) {
 });
 
 router.delete("aws/delete/virtualmachine", async function(req, response) {
-  console.log(req.query.id);
   if (utils.validateUser(req.headers.token)) {
   } else {
     res = {
@@ -80,7 +75,6 @@ router.delete("aws/delete/virtualmachine", async function(req, response) {
 });
 
 router.delete("aws/delete/virtualnetwork", async function(req, response) {
-  console.log(req.query.id);
   if (utils.validateUser(req.headers.token)) {
   } else {
     res = {
@@ -92,7 +86,6 @@ router.delete("aws/delete/virtualnetwork", async function(req, response) {
 });
 
 router.delete("aws/delete/database", async function(req, response) {
-  console.log(req.query.id);
   if (utils.validateUser(req.headers.token)) {
   } else {
     res = {
@@ -104,7 +97,6 @@ router.delete("aws/delete/database", async function(req, response) {
 });
 
 router.delete("gcp/delete/virtualmachine", async function(req, response) {
-  console.log(req.query.id);
   if (utils.validateUser(req.headers.token)) {
   } else {
     res = {
@@ -116,7 +108,6 @@ router.delete("gcp/delete/virtualmachine", async function(req, response) {
 });
 
 router.delete("gcp/delete/virtualnetwork", async function(req, response) {
-  console.log(req.query.id);
   if (utils.validateUser(req.headers.token)) {
   } else {
     res = {
@@ -128,7 +119,6 @@ router.delete("gcp/delete/virtualnetwork", async function(req, response) {
 });
 
 router.delete("gcp/delete/database", async function(req, response) {
-  console.log(req.query.id);
   if (utils.validateUser(req.headers.token)) {
   } else {
     res = {
