@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Icon } from "semantic-ui-react";
-import "../LoginPage/LoginPage.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Icon } from 'semantic-ui-react';
+import '../LoginPage/LoginPage.css';
 
 class PageNotFound extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class PageNotFound extends React.Component {
 
   render() {
     return (
-      <div class="main">
+      <div className="main">
         <div>
           <Icon name="search" color="blue" size="big" />
           <h1>404 Page Not Found!</h1>

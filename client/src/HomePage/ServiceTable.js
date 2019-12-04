@@ -1,11 +1,13 @@
-import React, { Component } from "react";
-import { Table } from "semantic-ui-react";
+import React, { Component } from 'react';
+import { Table } from 'semantic-ui-react';
 
 class ServiceTable extends Component {
   renderTableData() {
     if (this.props.service) {
       return this.props.service.map((service, index) => {
-        const { id, serviceid, name, type, location } = service; //destructuring
+        const {
+          id, serviceid, name, type, location,
+        } = service; // destructuring
         return (
           <Table.Row key={id}>
             <Table.Cell>{id}</Table.Cell>
@@ -14,7 +16,7 @@ class ServiceTable extends Component {
             <Table.Cell>{type}</Table.Cell>
             <Table.Cell>{location}</Table.Cell>
             <Table.Cell onClick={() => this.onDelete(name)}>
-              <i class="trash alternate icon" />
+              <i className="trash alternate icon" />
             </Table.Cell>
           </Table.Row>
         );
@@ -24,11 +26,9 @@ class ServiceTable extends Component {
 
   renderTableHeader() {
     const header = Object.keys(this.props.service[0]);
-    return header.map((key, index) => {
-      return (
-        <Table.HeaderCell key={index}>{key.toUpperCase()}</Table.HeaderCell>
-      );
-    });
+    return header.map((key, index) => (
+      <Table.HeaderCell key={index}>{key.toUpperCase()}</Table.HeaderCell>
+    ));
   }
 
   onDelete(name) {

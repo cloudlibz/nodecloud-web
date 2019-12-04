@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { userActions } from "../_actions/user.actions.js";
+import { userActions } from '../_actions/user.actions.js';
 
 class SignupPage extends React.Component {
   constructor(props) {
@@ -10,14 +10,14 @@ class SignupPage extends React.Component {
 
     this.state = {
       user: {
-        email: "",
-        username: "",
-        password: ""
+        email: '',
+        username: '',
+        password: '',
       },
       submitted: false,
-      usernameError: "",
-      passwordError: "",
-      emailError: ""
+      usernameError: '',
+      passwordError: '',
+      emailError: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -30,8 +30,8 @@ class SignupPage extends React.Component {
     this.setState({
       user: {
         ...user,
-        [name]: value
-      }
+        [name]: value,
+      },
     });
   }
 
@@ -43,7 +43,7 @@ class SignupPage extends React.Component {
     const { dispatch } = this.props;
 
     if (this.handleValidation()) {
-      this.setState({ passwordError: "", usernameError: "", emailError: "" });
+      this.setState({ passwordError: '', usernameError: '', emailError: '' });
       dispatch(userActions.register(user));
     }
   }
@@ -52,61 +52,61 @@ class SignupPage extends React.Component {
     const { user } = this.state;
     const isFormValid = true;
 
-    //Password
+    // Password
     if (!user.password) {
       isFormValid = false;
       this.setState({
-        passwordError: "Please enter password",
-        usernameError: "",
-        emailError: ""
+        passwordError: 'Please enter password',
+        usernameError: '',
+        emailError: '',
       });
     }
 
-    //Name
+    // Name
     if (!user.username) {
       isFormValid = false;
       this.setState({
-        usernameError: "Please enter username",
-        emailError: "",
-        passwordError: ""
+        usernameError: 'Please enter username',
+        emailError: '',
+        passwordError: '',
       });
-    } else if (typeof user.username !== "undefined") {
+    } else if (typeof user.username !== 'undefined') {
       if (!user.username.match(/^[a-zA-Z]+$/)) {
         isFormValid = false;
         this.setState({
-          usernameError: "Username should only contain letters",
-          emailError: "",
-          passwordError: ""
+          usernameError: 'Username should only contain letters',
+          emailError: '',
+          passwordError: '',
         });
       }
     }
 
-    //Email
+    // Email
     if (!user.email) {
       isFormValid = false;
       this.setState({
-        emailError: "Please enter email",
-        usernameError: "",
-        passwordError: ""
+        emailError: 'Please enter email',
+        usernameError: '',
+        passwordError: '',
       });
-    } else if (typeof user.email !== "undefined") {
-      const lastAtPos = user.email.lastIndexOf("@");
-      const lastDotPos = user.email.lastIndexOf(".");
+    } else if (typeof user.email !== 'undefined') {
+      const lastAtPos = user.email.lastIndexOf('@');
+      const lastDotPos = user.email.lastIndexOf('.');
 
       if (
         !(
-          lastAtPos < lastDotPos &&
-          lastAtPos > 0 &&
-          user.email.indexOf("@@") == -1 &&
-          lastDotPos > 2 &&
-          user.email.length - lastDotPos > 2
+          lastAtPos < lastDotPos
+          && lastAtPos > 0
+          && user.email.indexOf('@@') == -1
+          && lastDotPos > 2
+          && user.email.length - lastDotPos > 2
         )
       ) {
         isFormValid = false;
         this.setState({
-          emailError: "Please enter a valid email",
-          usernameError: "",
-          passwordError: ""
+          emailError: 'Please enter a valid email',
+          usernameError: '',
+          passwordError: '',
         });
       }
     }
@@ -120,14 +120,14 @@ class SignupPage extends React.Component {
       submitted,
       usernameError,
       passwordError,
-      emailError
+      emailError,
     } = this.state;
     return (
       <div className="main">
         <div className="innerBox">
           <div className="logoHolder">
             <img
-              src={require("../media/nodecloudlogo.png")}
+              src={require('../media/nodecloudlogo.png')}
               alt="Nodecloud Logo"
               className="logo"
             />
@@ -145,8 +145,8 @@ class SignupPage extends React.Component {
                   Email
                 </label>
                 <div
-                  className={emailError ? "ui input error" : "ui input"}
-                  style={{ flexDirection: "column" }}
+                  className={emailError ? 'ui input error' : 'ui input'}
+                  style={{ flexDirection: 'column' }}
                 >
                   <input
                     type="email"
@@ -167,8 +167,8 @@ class SignupPage extends React.Component {
                   Username
                 </label>
                 <div
-                  className={usernameError ? "ui input error" : "ui input"}
-                  style={{ flexDirection: "column" }}
+                  className={usernameError ? 'ui input error' : 'ui input'}
+                  style={{ flexDirection: 'column' }}
                 >
                   <input
                     type="text"
@@ -186,11 +186,12 @@ class SignupPage extends React.Component {
               </div>
               <div className="inline fields">
                 <label htmlFor="password" className="label">
-                  Password{" "}
+                  Password
+                  {' '}
                 </label>
                 <div
-                  className={passwordError ? "ui input error" : "ui input"}
-                  style={{ flexDirection: "column" }}
+                  className={passwordError ? 'ui input error' : 'ui input'}
+                  style={{ flexDirection: 'column' }}
                 >
                   <input
                     type="password"
@@ -211,10 +212,10 @@ class SignupPage extends React.Component {
                   LOGIN
                 </Link>
                 <button
-                  class="ui primarycolor button"
+                  className="ui primarycolor button"
                   onClick={this.handleSubmit}
                 >
-                  {" "}
+                  {' '}
                   SIGN UP
                 </button>
               </div>
@@ -229,7 +230,7 @@ class SignupPage extends React.Component {
 function mapStateToProps(state) {
   const { registering } = state.registration;
   return {
-    registering
+    registering,
   };
 }
 

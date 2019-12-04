@@ -1,9 +1,11 @@
-import React from "react";
-import { Form } from "semantic-ui-react";
+import React from 'react';
+import { Form } from 'semantic-ui-react';
 
-function DropdownSelect({ name, placeholder, required, val, _handleChange }) {
+function DropdownSelect({
+  name, placeholder, required, val, _handleChange,
+}) {
   return (
-    <div style={{ marginTop: "10px" }}>
+    <div style={{ marginTop: '10px' }}>
       <Form.Select
         name={name}
         label={name}

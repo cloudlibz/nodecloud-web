@@ -1,7 +1,7 @@
-import { userConstants } from "../_constants/user.constants.js";
-import { userService } from "../_services/user.services.js";
-import { alertActions } from "./alert.actions.js";
-import { history } from "../_helpers/history.js";
+import { userConstants } from '../_constants/user.constants.js';
+import { userService } from '../_services/user.services.js';
+import { alertActions } from './alert.actions.js';
+import { history } from '../_helpers/history.js';
 
 export const userActions = {
   login,
@@ -12,16 +12,16 @@ export const userActions = {
   createVirtualNetwork,
   createDatabase,
   createSecurity,
-  delete: _delete
+  delete: _delete,
 };
 
 function login(username, password) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(request({ username }));
-    userService.login(username, password).then(user => {
+    userService.login(username, password).then((user) => {
       if (user.success) {
         dispatch(success(user));
-        history.push("/home");
+        history.push('/home');
       } else {
         dispatch(failure(user.message));
         dispatch(alertActions.error(user.message));
@@ -46,13 +46,13 @@ function logout() {
 }
 
 function register(user) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(request(user));
 
-    userService.register(user).then(user => {
+    userService.register(user).then((user) => {
       if (user.success) {
         dispatch(success(user));
-        history.push("/home");
+        history.push('/home');
       } else {
         dispatch(failure(user.message));
         dispatch(alertActions.error(user.message));
@@ -72,10 +72,10 @@ function register(user) {
 }
 
 function getAll(serviceProvider) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(request());
 
-    userService.getAll(serviceProvider).then(res => {
+    userService.getAll(serviceProvider).then((res) => {
       if (res.success) {
         dispatch(success(res.data));
         dispatch(alertActions.clear());
@@ -98,9 +98,9 @@ function getAll(serviceProvider) {
 }
 
 function createVirtualMachine(params) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(request(params));
-    userService.createVirtualMachine(params).then(res => {
+    userService.createVirtualMachine(params).then((res) => {
       if (res.success) {
         dispatch(success(res.data));
         dispatch(alertActions.success(res.message));
@@ -123,9 +123,9 @@ function createVirtualMachine(params) {
 }
 
 function createVirtualNetwork(params) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(request(params));
-    userService.createVirtualNetwork(params).then(res => {
+    userService.createVirtualNetwork(params).then((res) => {
       if (res.success) {
         dispatch(success(res.data));
         dispatch(alertActions.success(res.message));
@@ -148,9 +148,9 @@ function createVirtualNetwork(params) {
 }
 
 function createDatabase(params) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(request(params));
-    userService.createDatabase(params).then(res => {
+    userService.createDatabase(params).then((res) => {
       if (res.success) {
         dispatch(success(res.data));
         dispatch(alertActions.success(res.message));
@@ -173,9 +173,9 @@ function createDatabase(params) {
 }
 
 function createSecurity(params) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(request(params));
-    userService.createSecurity(params).then(res => {
+    userService.createSecurity(params).then((res) => {
       if (res.success) {
         dispatch(success(res.data));
         dispatch(alertActions.success(res.message));
@@ -199,17 +199,17 @@ function createSecurity(params) {
 
 // prefixed function name with underscore because delete is a reserved word in javascript
 function _delete(id) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(request(id));
 
     userService.delete(id).then(
-      user => {
+      (user) => {
         dispatch(success(id));
         dispatch(alertActions.success(user.message));
       },
-      error => {
+      (error) => {
         dispatch(failure(id, error));
-      }
+      },
     );
   };
 
