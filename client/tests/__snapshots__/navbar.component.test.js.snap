@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavBar /> Unit Tests renders correctly 1`] = `
+<div>
+  <div
+    class="pusher"
+  >
+    <div
+      class="ui menu asd borderless"
+    >
+      <a
+        class="item openbtn"
+        href="#!"
+        onClick={[Function]}
+      >
+        <i
+          class="icon content"
+        />
+      </a>
+      <img
+        alt="Nodecloud logo"
+        class="nav-logo"
+        onClick={[Function]}
+        src="../media/nodecloudlogo.png"
+      />
+      <a
+        class="item"
+        href="#!"
+        onClick={[Function]}
+      >
+         
+        Node Cloud
+      </a>
+      <div
+        class="right menu"
+      >
+        <div
+          aria-expanded={false}
+          className="ui inline dropdown"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseDown={[Function]}
+          role="listbox"
+          style={
+            Object {
+              "padding": 12,
+            }
+          }
+          tabIndex={0}
+        >
+          <div
+            aria-atomic={true}
+            aria-live="polite"
+            className="default text"
+            role="alert"
+          >
+            Select Provider
+          </div>
+          <i
+            aria-hidden="true"
+            className="dropdown icon"
+            onClick={[Function]}
+          />
+          <div
+            className="menu transition"
+          >
+            <div
+              aria-checked={false}
+              aria-selected={true}
+              className="selected item"
+              onClick={[Function]}
+              role="option"
+              style={
+                Object {
+                  "pointerEvents": "all",
+                }
+              }
+            >
+              <img
+                className="ui avatar image"
+                src="../media/aws.png"
+              />
+              <span
+                className="text"
+              >
+                Amazon Web Services
+              </span>
+            </div>
+            <div
+              aria-checked={false}
+              aria-selected={false}
+              className="item"
+              onClick={[Function]}
+              role="option"
+              style={
+                Object {
+                  "pointerEvents": "all",
+                }
+              }
+            >
+              <img
+                className="ui avatar image"
+                src="../media/azure.png"
+              />
+              <span
+                className="text"
+              >
+                Azure
+              </span>
+            </div>
+            <div
+              aria-checked={false}
+              aria-selected={false}
+              className="item"
+              onClick={[Function]}
+              role="option"
+              style={
+                Object {
+                  "pointerEvents": "all",
+                }
+              }
+            >
+              <img
+                className="ui avatar image"
+                src="../media/gcp.png"
+              />
+              <span
+                className="text"
+              >
+                Google Cloud Platform
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ui dropdown item"
+        >
+          test
+           
+          <i
+            class="dropdown icon"
+          />
+          <div
+            class="menu"
+          >
+            <a
+              class="item"
+              href="#!"
+            >
+              Help
+            </a>
+            <a
+              class="item"
+              href="#!"
+            >
+              Logout
+            </a>
+          </div>
+        </div>
+        <div
+          class="item"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
