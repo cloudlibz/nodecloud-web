@@ -1,62 +1,63 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import { userActions } from "../_actions/user.actions.js";
-import "./HomePage.css";
-import ServiceTable from "./ServiceTable";
-import NavBar from "../_components/NavBar";
-import SideBar from "../_components/SideBar";
-import { Loader } from "semantic-ui-react";
+import { userActions } from '../_actions/user.actions.js';
+import './HomePage.css';
+import ServiceTable from './ServiceTable';
+import NavBar from '../_components/NavBar';
+import SideBar from '../_components/SideBar';
+import { Loader } from 'semantic-ui-react';
 
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedService: localStorage.getItem("currentProvider") || "azure",
-      user: "",
+      selectedService: localStorage.getItem('currentProvider') || 'azure',
+      user: '',
       showModal: false,
       showSideBar: true,
-      selectedDashboardService: "",
+      selectedDashboardService: '',
       virtualMachine: {
-        resourceGroupName: "",
-        vmName: "",
-        location: ""
-      }
+        resourceGroupName: '',
+        vmName: '',
+        location: '',
+      },
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleServiceCreate = this.handleServiceCreate.bind(this);
     this.changeSelectedDashboardService = this.changeSelectedDashboardService.bind(
-      this
+      this,
     );
   }
 
   openModal() {
     this.setState({ showModal: true });
   }
+
   closeModal() {
     this.setState({ showModal: false });
   }
 
   componentDidMount() {
     this.setState({
-      user: localStorage.getItem("user")
+      user: localStorage.getItem('user'),
     });
     this.props.dispatch(userActions.getAll(this.state.selectedService));
   }
 
   handleServiceChange(serviceName) {
-    localStorage.setItem("currentProvider", serviceName);
+    localStorage.setItem('currentProvider', serviceName);
     this.setState({
-      selectedService: serviceName
+      selectedService: serviceName,
     });
     this.props.dispatch(userActions.getAll(serviceName));
   }
 
   handleCreateModal() {
     this.setState({
-      showModal: true
+      showModal: true,
     });
   }
 
@@ -73,8 +74,8 @@ class HomePage extends React.Component {
     this.setState({
       virtualMachine: {
         ...virtualMachine,
-        [name]: value
-      }
+        [name]: value,
+      },
     });
   }
 
@@ -84,13 +85,13 @@ class HomePage extends React.Component {
 
   handleShowSideBar() {
     this.setState({
-      showSideBar: !this.state.showSideBar
+      showSideBar: !this.state.showSideBar,
     });
   }
 
   changeSelectedDashboardService(serviceName) {
     this.setState({
-      selectedDashboardService: serviceName
+      selectedDashboardService: serviceName,
     });
   }
 
@@ -105,29 +106,27 @@ class HomePage extends React.Component {
         <div style={{ margin: 20, marginLeft: showSideBar ? 250 : 0 }}>
           {showSideBar && (
             <SideBar
-              changeSelectedDashboardService={serviceName =>
-                this.changeSelectedDashboardService(serviceName)
-              }
+              changeSelectedDashboardService={(serviceName) => this.changeSelectedDashboardService(serviceName)}
             />
           )}
           <div id="site-mainContainer">
-            <div class="ui center aligned page grid" style={{ marginTop: 50 }}>
+            <div className="ui center aligned page grid" style={{ marginTop: 50 }}>
               <div
-                class="three wide left floated column"
-                onClick={() => this.handleServiceChange("azure")}
+                className="three wide left floated column"
+                onClick={() => this.handleServiceChange('azure')}
               >
                 <div
                   className="serviceChooser"
                   style={
-                    selectedService == "azure"
-                      ? { borderColor: "#00AAFD", boxShadow: 20 }
-                      : { borderColor: "#d2d2d2" }
+                    selectedService == 'azure'
+                      ? { borderColor: '#00AAFD', boxShadow: 20 }
+                      : { borderColor: '#d2d2d2' }
                   }
                 >
                   <img
-                    src={require("../media/azure.png")}
+                    src={require('../media/azure.png')}
                     alt="Nodecloud Logo"
-                    class="ui small image"
+                    className="ui small image"
                   />
                   <div className="view_action_service_div">
                     <p>VIEW ACTIVE SERVICES</p>
@@ -135,21 +134,21 @@ class HomePage extends React.Component {
                 </div>
               </div>
               <div
-                class="three wide column"
-                onClick={() => this.handleServiceChange("aws")}
+                className="three wide column"
+                onClick={() => this.handleServiceChange('aws')}
               >
                 <div
                   className="serviceChooser"
                   style={
-                    selectedService == "aws"
-                      ? { borderColor: "#00AAFD" }
-                      : { borderColor: "#d2d2d2" }
+                    selectedService == 'aws'
+                      ? { borderColor: '#00AAFD' }
+                      : { borderColor: '#d2d2d2' }
                   }
                 >
                   <img
-                    src={require("../media/aws.png")}
+                    src={require('../media/aws.png')}
                     alt="Nodecloud Logo"
-                    class="ui small image"
+                    className="ui small image"
                   />
                   <div className="view_action_service_div">
                     <p>VIEW ACTIVE SERVICES</p>
@@ -157,21 +156,21 @@ class HomePage extends React.Component {
                 </div>
               </div>
               <div
-                class="three wide right floated column"
-                onClick={() => this.handleServiceChange("gcp")}
+                className="three wide right floated column"
+                onClick={() => this.handleServiceChange('gcp')}
               >
                 <div
                   className="serviceChooser"
                   style={
-                    selectedService == "gcp"
-                      ? { borderColor: "#00AAFD" }
-                      : { borderColor: "#d2d2d2" }
+                    selectedService == 'gcp'
+                      ? { borderColor: '#00AAFD' }
+                      : { borderColor: '#d2d2d2' }
                   }
                 >
                   <img
-                    src={require("../media/gcp.png")}
+                    src={require('../media/gcp.png')}
                     alt="Nodecloud Logo"
-                    class="ui small image"
+                    className="ui small image"
                   />
                   <div className="view_action_service_div">
                     <p>VIEW ACTIVE SERVICES</p>
@@ -182,13 +181,17 @@ class HomePage extends React.Component {
             <div style={{ margin: 50 }}>
               {this.props.users.loading && (
                 <Loader active inline="centered">
-                  Loading {selectedService} services...
+                  Loading
+                  {' '}
+                  {selectedService}
+                  {' '}
+services...
                 </Loader>
               )}
               {!this.props.users.loading && (
                 <ServiceTable
                   service={this.props.users.items}
-                  handleDeleteService={name => this.handleDeleteService(name)}
+                  handleDeleteService={(name) => this.handleDeleteService(name)}
                 />
               )}
             </div>
@@ -199,11 +202,9 @@ class HomePage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    users: state.users
-  };
-};
+const mapStateToProps = (state) => ({
+  users: state.users,
+});
 
 const connectedHomePage = connect(mapStateToProps)(HomePage);
 export { connectedHomePage as HomePage };

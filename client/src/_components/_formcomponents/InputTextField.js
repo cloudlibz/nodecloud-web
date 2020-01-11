@@ -1,9 +1,11 @@
-import React, { Component } from "react";
-import { Form } from "semantic-ui-react";
+import React, { Component } from 'react';
+import { Form } from 'semantic-ui-react';
 
-function InputTextField({ name, placeholder, required, _handleChange }) {
+function InputTextField({
+  name, placeholder, required, _handleChange,
+}) {
   return (
-    <div style={{ marginTop: "10px" }}>
+    <div style={{ marginTop: '10px' }}>
       <Form.Input
         type="text"
         name={name}
