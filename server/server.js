@@ -6,7 +6,7 @@ app.set("port", process.env.PORT || 4000);
 app.use(express.static("public"));
 app.use(cors());
 
-// const db = require("../server/db");
+const db = require("../server/db");
 
 const authRoutes = require("./routes/auth");
 app.use("/", authRoutes);
