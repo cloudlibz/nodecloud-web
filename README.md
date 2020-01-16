@@ -41,9 +41,26 @@ $ npm start // this will compile the react code using webpack and run them at po
 
 ## Server Side (PORT: 4000)
 
-## Prepare your secret
+## Environment  Variables (.env)
 
-You need to add a JWT_SECRET in .env
+    JWT_SECRET = YOUR_JWT_SECRET
+
+  ### NOTE: nodecloud currently supports MICROSOFT AZURE
+  Add the following Azure Credentials to your .env file 
+
+    AZURE_CLIENT_ID= YOUR_CLIENT_ID
+
+    AZURE_CLIENT_SECRET=YOUR_CLIENT_SECRET
+
+    AZURE_TENANT_ID=YOUR_TENANT_ID
+
+    AZURE_SUBSCRIPTION_ID=YOUR_SUBSCRIPTION_ID
+
+    AZURE_STORAGE_ACCESS_KEY=YOUR_STORAGE_ACCESS_KEY
+
+    AZURE_STORAGE_ACCOUNT=YOUR_STORAGE_ACCOUNT
+
+    AZURE_STORAGE_CONNECTION_STRING=YOUR_STORAGE_CONNECTION_STRING
 
 ## Start
 
@@ -77,5 +94,4 @@ $ docker-compose up
 </p>
 
 ## License
-
 MIT
