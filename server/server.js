@@ -10,7 +10,7 @@ const db = require("../server/db");
 
 const authRoutes = require("./routes/auth");
 app.use("/", authRoutes);
-const serviceRoutes = require("./routes/getServices");
+const serviceRoutes = require("./routes/getservices");
 app.use("/", serviceRoutes);
 const createRoutes = require("./routes/createservices");
 app.use("/", createRoutes);
