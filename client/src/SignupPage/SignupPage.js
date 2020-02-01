@@ -50,7 +50,7 @@ class SignupPage extends React.Component {
 
   handleValidation() {
     const { user } = this.state;
-    const isFormValid = true;
+    let isFormValid = true;
 
     //Password
     if (!user.password) {
