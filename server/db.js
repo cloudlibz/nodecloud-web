@@ -2,24 +2,30 @@
 const sqlite3 = require("sqlite3").verbose();
 
 // create a db instance
-const db = new sqlite3.Database("./user.sqlite3", err => {
+const db = new sqlite3.Database("./db.sqlite3", err => {
+  
   if (err) {
     console.log("Error when creating the database", err);
   } else {
-    console.log("Database created!");
     createTableUser();
     createTableService();
+    console.log("Database created!");
   }
 });
 
+const options = {
+  client: "sqlite3",
+  connection: {
+    filename: "./db.sqlite3"
+  },
+  useNullAsDefault: true
+};
+
 const createTableUser = () => {
-  const options = {
-    client: "sqlite3",
-    connection: {
-      filename: "./user.sqlite3"
-    }
-  };
+  
   const knex = require("knex")(options);
+  if(knex.schema.hasTable("users")) return;
+
   knex.schema
     .createTable("users", function(t) {
       t.increments("id").primary();
@@ -28,17 +34,14 @@ const createTableUser = () => {
       t.string("password").notNullable();
     })
     .then(console.log("User Table created"));
-  //     // db.run("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE, username TEXT, password TEXT)");
+    // db.run("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE, username TEXT, password TEXT)");
 };
 
 const createTableService = () => {
-  const options = {
-    client: "sqlite3",
-    connection: {
-      filename: "./user.sqlite3"
-    }
-  };
+  
   const knex = require("knex")(options);
+  if(knex.schema.hasTable("services")) return;
+
   knex.schema
     .createTable("services", function(t) {
       t.increments("id").primary();
@@ -47,7 +50,8 @@ const createTableService = () => {
       t.string("type").notNullable();
       t.string("location").notNullable();
     })
-    .then(console.log("Service Table created"));
+    .then(console.log("Service Table created"))
+    
 
   knex.schema
     .alterTable("services", function(t) {
