@@ -47,7 +47,6 @@ class SignupPage extends React.Component {
       dispatch(userActions.register(user));
     }
   }
-
   handleValidation() {
     const { user } = this.state;
     let isFormValid = true;
