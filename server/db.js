@@ -21,10 +21,10 @@ const options = {
   useNullAsDefault: true
 };
 
-const createTableUser = () => {
+const createTableUser = async () => {
   
   const knex = require("knex")(options);
-  if(knex.schema.hasTable("users")) return;
+  if(await knex.schema.hasTable("users")) return;
 
   knex.schema
     .createTable("users", function(t) {
@@ -37,10 +37,10 @@ const createTableUser = () => {
     // db.run("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE, username TEXT, password TEXT)");
 };
 
-const createTableService = () => {
+const createTableService = async () => {
   
   const knex = require("knex")(options);
-  if(knex.schema.hasTable("services")) return;
+  if(await knex.schema.hasTable("services")) return;
 
   knex.schema
     .createTable("services", function(t) {
