@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { userActions } from "../_actions/user.actions.js";
-import "./LoginPage.css";
+import { userActions } from "../../_actions/user.actions.js";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -62,7 +61,7 @@ class LoginPage extends React.Component {
         <div className="innerBox">
           <div className="logoHolder">
             <img
-              src={require("../media/nodecloudlogo.png")}
+              src={require("../../media/nodecloudlogo.png")}
               alt="Nodecloud Logo"
               className="logo"
             />

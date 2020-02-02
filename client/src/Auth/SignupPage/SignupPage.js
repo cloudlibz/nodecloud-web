@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { userActions } from "../_actions/user.actions.js";
+import { userActions } from "../../_actions/user.actions.js";
 
 class SignupPage extends React.Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class SignupPage extends React.Component {
 
   handleValidation() {
     const { user } = this.state;
-    const isFormValid = true;
+    let isFormValid = true;
 
     //Password
     if (!user.password) {
@@ -127,7 +127,7 @@ class SignupPage extends React.Component {
         <div className="innerBox">
           <div className="logoHolder">
             <img
-              src={require("../media/nodecloudlogo.png")}
+              src={require("../../media/nodecloudlogo.png")}
               alt="Nodecloud Logo"
               className="logo"
             />

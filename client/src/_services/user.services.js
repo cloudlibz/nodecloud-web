@@ -73,7 +73,14 @@ function register(user) {
 
   return fetch(Urls.BASE_URL + Urls.SUB_URL_SIGNUP, requestOptions).then(
     handleResponse
-  );
+  ).then(res => {
+    if (res.success) {
+      // store user details and jwt token in local storage to keep user logged in between page refreshes
+      localStorage.setItem("user", JSON.stringify(res.data));
+      localStorage.setItem("access_token", res.token);
+    }
+    return res;
+  });
 }
 
 function createVirtualMachine(params) {

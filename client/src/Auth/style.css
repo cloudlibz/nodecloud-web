@@ -8,17 +8,22 @@
   display: flex;
 }
 .innerBox {
-  width: 65%;
-  height: 60%;
-  background-color: aqua;
-  position: absolute;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
   border-radius: 22px;
   flex-direction: row;
   display: flex;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 840px) {
+  .innerBox {
+    margin: 0 20px;
+  }
 }
 .logoHolder {
   width: 40%;
-  height: 100%;
+  min-height: 450px;
   border-top-left-radius: 22px;
   border-bottom-left-radius: 22px;
   background-image: linear-gradient(#009cff, #0080d4);
@@ -28,7 +33,6 @@
 }
 .formHolder {
   width: 60%;
-  height: 100%;
   border-top-right-radius: 22px;
   border-bottom-right-radius: 22px;
   background-color: white;
@@ -39,6 +43,26 @@
   align-items: center;
   display: flex;
 }
+@media screen and (max-width: 640px) {
+  .logoHolder,
+  .formHolder {
+    width: 100%;
+  }
+  .logoHolder {
+    border-radius: 0px;
+    min-height: 200px;
+    border-top-right-radius: 22px;
+    border-top-left-radius: 22px;
+  }
+  .formHolder {
+    border: 1px solid #d2d2d2;
+    border-radius: 0px;
+    padding: 30px 3px;
+    border-bottom-left-radius: 22px;
+    border-bottom-right-radius: 22px;
+  }
+}
+
 .logo {
   width: 100px;
   height: 100px;
@@ -46,6 +70,12 @@
   border-radius: 50px;
   margin-top: 30%;
 }
+@media screen and (max-width: 640px) {
+  .logo {
+    margin-top: 10%;
+  }
+}
+
 .title {
   font-family: Courier;
   letter-spacing: 1;
@@ -53,9 +83,15 @@
   margin-top: 20%;
   font-size: 24px;
 }
+@media screen and (max-width: 640px) {
+  .title {
+    margin-top: 10%;
+  }
+}
 .subtitle {
   font-size: 14px;
   color: #c4daff;
+  padding-bottom: 20px;
 }
 .label {
   align-self: left;
