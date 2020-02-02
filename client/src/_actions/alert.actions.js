@@ -1,11 +1,11 @@
-//All alertActions, so it is easy to see all actions at a glance.
-//dispatch(alertActions.success('Registration successful')) to call any of them
-import { alertConstants } from "../_constants/alert.constants.js";
+// All alertActions, so it is easy to see all actions at a glance.
+// dispatch(alertActions.success('Registration successful')) to call any of them
+import { alertConstants } from '../_constants/alert.constants.js';
 
 export const alertActions = {
   success,
   error,
-  clear
+  clear,
 };
 
 function success(message) {
