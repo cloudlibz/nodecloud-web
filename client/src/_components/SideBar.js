@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import "./SideBar.css";
-import { history } from "../_helpers/history.js";
+import React, { Component } from 'react';
+import './SideBar.css';
+import { history } from '../_helpers/history.js';
 
 class SideBar extends Component {
   constructor(props) {
@@ -8,7 +8,7 @@ class SideBar extends Component {
     this.state = { visible: true };
     this.navActiveState = true;
     this.changeSelectedDashboardService = this.changeSelectedDashboardService.bind(
-      this
+      this,
     );
   }
 
@@ -20,53 +20,49 @@ class SideBar extends Component {
   render() {
     return (
       <div
-        class={
+        className={
           this.state.visible
-            ? "ui sidebar vertical left menu overlay visible navActive"
-            : "ui sidebar vertical left menu overlay visible"
+            ? 'ui sidebar vertical left menu overlay visible navActive'
+            : 'ui sidebar vertical left menu overlay visible'
         }
         id="site-sideBar"
       >
-        <div class="ui accordion">
-          <a href="#!" class="item" onClick={() => history.push("/home")}>
+        <div className="ui accordion">
+          <a href="#!" className="item" onClick={() => history.push('/home')}>
             <b>Home</b>
           </a>
           <a
             href="#!"
-            class="item"
-            onClick={() =>
-              this.changeSelectedDashboardService("virtualmachines")
-            }
+            className="item"
+            onClick={() => this.changeSelectedDashboardService('virtualmachines')}
           >
             Virtual Machines
           </a>
           <a
             href="#!"
-            class="item"
-            onClick={() =>
-              this.changeSelectedDashboardService("virtualnetworks")
-            }
+            className="item"
+            onClick={() => this.changeSelectedDashboardService('virtualnetworks')}
           >
             Virtual Networks
           </a>
           <a
             href="#!"
-            class="item"
-            onClick={() => this.changeSelectedDashboardService("database")}
+            className="item"
+            onClick={() => this.changeSelectedDashboardService('database')}
           >
             Database
           </a>
           <a
             href="#!"
-            class="item"
-            onClick={() => this.changeSelectedDashboardService("storage")}
+            className="item"
+            onClick={() => this.changeSelectedDashboardService('storage')}
           >
             Storage
           </a>
           <a
             href="#!"
-            class="item"
-            onClick={() => this.changeSelectedDashboardService("security")}
+            className="item"
+            onClick={() => this.changeSelectedDashboardService('security')}
           >
             Security
           </a>

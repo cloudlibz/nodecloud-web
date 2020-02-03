@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { userActions } from "../_actions/user.actions.js";
-import "./LoginPage.css";
+import { userActions } from '../_actions/user.actions.js';
+import './LoginPage.css';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -13,11 +13,11 @@ class LoginPage extends React.Component {
     this.props.dispatch(userActions.logout());
 
     this.state = {
-      username: "",
-      password: "",
+      username: '',
+      password: '',
       submitted: false,
-      usernameError: "",
-      passwordError: ""
+      usernameError: '',
+      passwordError: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -34,14 +34,14 @@ class LoginPage extends React.Component {
     this.setState({ submitted: true });
     const { username, password } = this.state;
     if (!username) {
-      this.setState({ usernameError: "Please enter username" });
+      this.setState({ usernameError: 'Please enter username' });
     } else if (!password) {
       this.setState({
-        passwordError: "Please enter password",
-        usernameError: ""
+        passwordError: 'Please enter password',
+        usernameError: '',
       });
     } else {
-      this.setState({ passwordError: "", usernameError: "" });
+      this.setState({ passwordError: '', usernameError: '' });
       const { dispatch } = this.props;
       if (username && password) {
         dispatch(userActions.login(username, password));
@@ -55,14 +55,14 @@ class LoginPage extends React.Component {
       password,
       submitted,
       usernameError,
-      passwordError
+      passwordError,
     } = this.state;
     return (
       <div className="main">
         <div className="innerBox">
           <div className="logoHolder">
             <img
-              src={require("../media/nodecloudlogo.png")}
+              src={require('../media/nodecloudlogo.png')}
               alt="Nodecloud Logo"
               className="logo"
             />
@@ -77,8 +77,8 @@ class LoginPage extends React.Component {
                     Username
                   </label>
                   <div
-                    className={usernameError ? "ui input error" : "ui input"}
-                    style={{ flexDirection: "column" }}
+                    className={usernameError ? 'ui input error' : 'ui input'}
+                    style={{ flexDirection: 'column' }}
                   >
                     <input
                       type="text"
@@ -95,13 +95,14 @@ class LoginPage extends React.Component {
                 </div>
               </div>
               <div>
-                <div class="inline fields">
+                <div className="inline fields">
                   <label htmlFor="password" className="label">
-                    Password{" "}
+                    Password
+                    {' '}
                   </label>
                   <div
-                    className={passwordError ? "ui input error" : "ui input"}
-                    style={{ flexDirection: "column" }}
+                    className={passwordError ? 'ui input error' : 'ui input'}
+                    style={{ flexDirection: 'column' }}
                   >
                     <input
                       type="password"
@@ -122,10 +123,10 @@ class LoginPage extends React.Component {
                   SIGN UP
                 </Link>
                 <button
-                  class="ui primarycolor button"
+                  className="ui primarycolor button"
                   onClick={this.handleSubmit}
                 >
-                  {" "}
+                  {' '}
                   LOGIN
                 </button>
               </div>
@@ -140,7 +141,7 @@ class LoginPage extends React.Component {
 function mapStateToProps(state) {
   const { loggingIn } = state.authentication;
   return {
-    loggingIn
+    loggingIn,
   };
 }
 

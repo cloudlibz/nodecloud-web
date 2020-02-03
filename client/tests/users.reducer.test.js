@@ -1,234 +1,234 @@
-import * as reducer from "../src/_reducers/users.reducer";
+import * as reducer from '../src/_reducers/users.reducer';
 
-describe("reducer", () => {
-  describe("GETALL REQUEST", () => {
-    test("sets getall to requesting", function() {
+describe('reducer', () => {
+  describe('GETALL REQUEST', () => {
+    test('sets getall to requesting', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_GETALL_REQUEST"
+        type: 'USERS_GETALL_REQUEST',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("GETALL SUCCESS", () => {
-    test("sets getall to success", function() {
+  describe('GETALL SUCCESS', () => {
+    test('sets getall to success', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_GETALL_SUCCESS"
+        type: 'USERS_GETALL_SUCCESS',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("GETALL FAILURE", () => {
-    test("sets getall to failure", function() {
+  describe('GETALL FAILURE', () => {
+    test('sets getall to failure', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_GETALL_FAILURE"
+        type: 'USERS_GETALL_FAILURE',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("DELETE REQUEST", () => {
-    test("sets delete to requesting", function() {
+  describe('DELETE REQUEST', () => {
+    test('sets delete to requesting', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_DELETE_REQUEST"
+        type: 'USERS_DELETE_REQUEST',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("DELETE SUCCESS", () => {
-    test("sets delete to success", function() {
+  describe('DELETE SUCCESS', () => {
+    test('sets delete to success', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_DELETE_SUCCESS"
+        type: 'USERS_DELETE_SUCCESS',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("DELETE FAILURE", () => {
-    test("sets delete to failure", function() {
+  describe('DELETE FAILURE', () => {
+    test('sets delete to failure', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_DELETE_FAILURE"
+        type: 'USERS_DELETE_FAILURE',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("CREATE VIRTUAL MACHINE REQUEST", () => {
-    test("sets create virtual machine to requesting", function() {
+  describe('CREATE VIRTUAL MACHINE REQUEST', () => {
+    test('sets create virtual machine to requesting', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_CREATE_VIRTUAL_MACHINE_REQUEST"
+        type: 'USERS_CREATE_VIRTUAL_MACHINE_REQUEST',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("CREATE VIRTUAL MACHINE SUCCESS", () => {
-    test("sets create virtual machine to success", function() {
+  describe('CREATE VIRTUAL MACHINE SUCCESS', () => {
+    test('sets create virtual machine to success', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_CREATE_VIRTUAL_MACHINE_SUCCESS"
+        type: 'USERS_CREATE_VIRTUAL_MACHINE_SUCCESS',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("CREATE VIRTUAL MACHINE FAILURE", () => {
-    test("sets create virtual machine to failure", function() {
+  describe('CREATE VIRTUAL MACHINE FAILURE', () => {
+    test('sets create virtual machine to failure', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_CREATE_VIRTUAL_MACHINE_FAILURE"
+        type: 'USERS_CREATE_VIRTUAL_MACHINE_FAILURE',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("CREATE VIRTUAL NETWORK REQUEST", () => {
-    test("sets create virtual network to requesting", function() {
+  describe('CREATE VIRTUAL NETWORK REQUEST', () => {
+    test('sets create virtual network to requesting', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_CREATE_VIRTUAL_NETWORK_REQUEST"
+        type: 'USERS_CREATE_VIRTUAL_NETWORK_REQUEST',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("CREATE VIRTUAL NETWORK SUCCESS", () => {
-    test("sets create virtual network to success", function() {
+  describe('CREATE VIRTUAL NETWORK SUCCESS', () => {
+    test('sets create virtual network to success', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_CREATE_VIRTUAL_NETWORK_SUCCESS"
+        type: 'USERS_CREATE_VIRTUAL_NETWORK_SUCCESS',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("CREATE VIRTUAL NETWORK FAILURE", () => {
-    test("sets create virtual network to failure", function() {
+  describe('CREATE VIRTUAL NETWORK FAILURE', () => {
+    test('sets create virtual network to failure', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_CREATE_VIRTUAL_NETWORK_FAILURE"
+        type: 'USERS_CREATE_VIRTUAL_NETWORK_FAILURE',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("CREATE DATBASE REQUEST", () => {
-    test("sets create database to requesting", function() {
+  describe('CREATE DATBASE REQUEST', () => {
+    test('sets create database to requesting', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_CREATE_DATBASE_REQUEST"
+        type: 'USERS_CREATE_DATBASE_REQUEST',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("CREATE DATBASE SUCCESS", () => {
-    test("sets create database to success", function() {
+  describe('CREATE DATBASE SUCCESS', () => {
+    test('sets create database to success', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_CREATE_DATBASE_SUCCESS"
+        type: 'USERS_CREATE_DATBASE_SUCCESS',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("CREATE DATBASE FAILURE", () => {
-    test("sets create database to failure", function() {
+  describe('CREATE DATBASE FAILURE', () => {
+    test('sets create database to failure', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_CREATE_DATBASE_FAILURE"
+        type: 'USERS_CREATE_DATBASE_FAILURE',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("CREATE SECURITY REQUEST", () => {
-    test("sets create security to requesting", function() {
+  describe('CREATE SECURITY REQUEST', () => {
+    test('sets create security to requesting', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_CREATE_SECURITY_REQUEST"
+        type: 'USERS_CREATE_SECURITY_REQUEST',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("CREATE SECURITY SUCCESS", () => {
-    test("sets create security to success", function() {
+  describe('CREATE SECURITY SUCCESS', () => {
+    test('sets create security to success', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_CREATE_SECURITY_SUCCESS"
+        type: 'USERS_CREATE_SECURITY_SUCCESS',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe("CREATE SECURITY FAILURE", () => {
-    test("sets create security to failure", function() {
+  describe('CREATE SECURITY FAILURE', () => {
+    test('sets create security to failure', () => {
       const previousState = {
-        otherProp: "test-123"
+        otherProp: 'test-123',
       };
       const action = {
-        type: "USERS_CREATE_SECURITY_FAILURE"
+        type: 'USERS_CREATE_SECURITY_FAILURE',
       };
       const nextState = reducer.users(previousState, action);
       expect(nextState).toMatchSnapshot();
