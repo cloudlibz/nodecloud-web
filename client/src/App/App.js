@@ -35,13 +35,13 @@ class App extends React.Component {
           <Switch>
             <PrivateRoute exact path="/" component={HomePage} />
             <Route path="/login" component={LoginPage} />
-            <Route path="/home" component={HomePage} />
+            <PrivateRoute path="/home" component={HomePage} />
             <Route path="/signup" component={SignupPage} />
-            <Route path="/virtualmachines" component={VirtualMachine} />
-            <Route path="/virtualnetworks" component={VirtualNetwork} />
-            <Route path="/database" component={Database} />
-            <Route path="/security" component={Security} />
-            <Route component={PageNotFound} />
+            <PrivateRoute path="/virtualmachines" component={VirtualMachine} />
+            <PrivateRoute path="/virtualnetworks" component={VirtualNetwork} />
+            <PrivateRoute path="/database" component={Database} />
+            <PrivateRoute path="/security" component={Security} />
+            <PrivateRoute component={PageNotFound} />
           </Switch>
         </Router>
       </div>
