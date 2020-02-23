@@ -2,9 +2,26 @@ import React, { Component } from "react";
 import { Table } from "semantic-ui-react";
 
 class ServiceTable extends Component {
-  renderTableData() {
+  constructor() {
+    super();
+    this.setPageNumber = this.setPageNumber.bind(this);
+    this.state = {
+      currentPage: 1
+    }
+  }
+
+  setPageNumber(event) {
+    this.setState({
+      currentPage: Number(event.target.id)
+    });
+  }
+
+  renderTableData(servicesPerPage) {
     if (this.props.service) {
-      return this.props.service.map((service, index) => {
+      const indexOfLastService = currentPage * servicesPerPage;
+      const indexOfFirstService = indexOfLastService - servicesPerPage;
+      const paginatedData = this.props.service.slice(indexOfFirstService, indexOfLastService);
+      return paginatedData.map((service, index) => {
         const { id, serviceid, name, type, location } = service; //destructuring
         return (
           <Table.Row key={id}>
@@ -36,14 +53,34 @@ class ServiceTable extends Component {
   }
 
   render() {
+    let servicesPerPage = 10;
+    const pageNumbers = [];
+
+    for (let i = 1; i <= Math.ceil(this.props.service.length / servicesPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map(number => {
+      return (
+        <li
+          key={number}
+          id={number}
+          onClick={this.setPageNumber}
+        >
+          {number}
+        </li>
+      );
+    });
+
     return (
       <div>
+        <ul>{renderPageNumbers}</ul>
         {this.props.service && (
           <Table id="users">
             <Table.Header>
               <Table.Row>{this.renderTableHeader()}</Table.Row>
             </Table.Header>
-            <Table.Body>{this.renderTableData()}</Table.Body>
+            <Table.Body>{this.renderTableData(servicesPerPage)}</Table.Body>
           </Table>
         )}
       </div>
