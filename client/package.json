@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.17.0",
     "history": "^4.9.0",
     "jquery": "^3.4.1",
     "react": "^16.8.6",
@@ -21,7 +23,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint:fix": "eslint --fix ."
   },
   "eslintConfig": {
     "extends": "react-app"
