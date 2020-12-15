@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SideBar /> Unit Tests renders correctly 1`] = `
+<div
+  class="ui sidebar vertical left menu overlay visible navActive"
+  id="site-sideBar"
+>
+  <div
+    class="ui accordion"
+  >
+    <a
+      class="item"
+      href="#!"
+      onClick={[Function]}
+    >
+      <b>
+         Home 
+      </b>
+       
+    </a>
+     
+    <a
+      class="item"
+      href="#!"
+      onClick={[Function]}
+    >
+      Virtual Machines 
+    </a>
+     
+    <a
+      class="item"
+      href="#!"
+      onClick={[Function]}
+    >
+      Virtual Networks 
+    </a>
+     
+    <a
+      class="item"
+      href="#!"
+      onClick={[Function]}
+    >
+      Database 
+    </a>
+     
+    <a
+      class="item"
+      href="#!"
+      onClick={[Function]}
+    >
+      Storage 
+    </a>
+     
+    <a
+      class="item"
+      href="#!"
+      onClick={[Function]}
+    >
+      Security 
+    </a>
+     
+  </div>
+   
+</div>
+`;
