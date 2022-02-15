@@ -5,21 +5,21 @@ services:
     restart: always
   backend:
     container_name: backend
-    build: ./node-backend/
+    build: ./server/
     restart: always
     ports:
       - "6200:6200"
     volumes:
-      - ./node-backend:/usr/src/app
+      - ./server:/usr/src/app
     depends_on:
       - sqlite
   frontend:
     container_name: frontend
-    build: ./react-frontend/
+    build: ./client/
     restart: always
     ports:
       - "3000:3000"
     volumes:
-      - ./react-frontend:/usr/src/app
+      - ./client:/usr/src/app
     depends_on:
       - backend
